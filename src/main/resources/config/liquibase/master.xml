@@ -14,7 +14,27 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126232441_added_entity_Automovil.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126232541_added_entity_TipoCombustible.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126232641_added_entity_ClasificacionAutomovil.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126232741_added_entity_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126232841_added_entity_Marca.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126232941_added_entity_TipoAutomovil.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233041_added_entity_Averia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233141_added_entity_EstadoAveria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233241_added_entity_Servicio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233341_added_entity_BitacoraAveria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233441_added_entity_Entrada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233541_added_entity_Empleado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233641_added_entity_Rol.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233741_added_entity_Pago.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20201126232441_added_entity_constraints_Automovil.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233041_added_entity_constraints_Averia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233341_added_entity_constraints_BitacoraAveria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233441_added_entity_constraints_Entrada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233541_added_entity_constraints_Empleado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201126233741_added_entity_constraints_Pago.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

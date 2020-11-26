@@ -48,6 +48,33 @@ public class CacheConfiguration {
             createCache(cm, com.mecanica.org.domain.User.class.getName());
             createCache(cm, com.mecanica.org.domain.Authority.class.getName());
             createCache(cm, com.mecanica.org.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mecanica.org.domain.Automovil.class.getName());
+            createCache(cm, com.mecanica.org.domain.Automovil.class.getName() + ".averias");
+            createCache(cm, com.mecanica.org.domain.TipoCombustible.class.getName());
+            createCache(cm, com.mecanica.org.domain.TipoCombustible.class.getName() + ".automovils");
+            createCache(cm, com.mecanica.org.domain.ClasificacionAutomovil.class.getName());
+            createCache(cm, com.mecanica.org.domain.ClasificacionAutomovil.class.getName() + ".automovils");
+            createCache(cm, com.mecanica.org.domain.Cliente.class.getName());
+            createCache(cm, com.mecanica.org.domain.Cliente.class.getName() + ".automovils");
+            createCache(cm, com.mecanica.org.domain.Marca.class.getName());
+            createCache(cm, com.mecanica.org.domain.Marca.class.getName() + ".automovils");
+            createCache(cm, com.mecanica.org.domain.TipoAutomovil.class.getName());
+            createCache(cm, com.mecanica.org.domain.TipoAutomovil.class.getName() + ".automovils");
+            createCache(cm, com.mecanica.org.domain.Averia.class.getName());
+            createCache(cm, com.mecanica.org.domain.Averia.class.getName() + ".bitacoraAverias");
+            createCache(cm, com.mecanica.org.domain.Averia.class.getName() + ".entradas");
+            createCache(cm, com.mecanica.org.domain.Averia.class.getName() + ".pagos");
+            createCache(cm, com.mecanica.org.domain.EstadoAveria.class.getName());
+            createCache(cm, com.mecanica.org.domain.EstadoAveria.class.getName() + ".averias");
+            createCache(cm, com.mecanica.org.domain.Servicio.class.getName());
+            createCache(cm, com.mecanica.org.domain.Servicio.class.getName() + ".entradas");
+            createCache(cm, com.mecanica.org.domain.BitacoraAveria.class.getName());
+            createCache(cm, com.mecanica.org.domain.Entrada.class.getName());
+            createCache(cm, com.mecanica.org.domain.Empleado.class.getName());
+            createCache(cm, com.mecanica.org.domain.Empleado.class.getName() + ".entradas");
+            createCache(cm, com.mecanica.org.domain.Rol.class.getName());
+            createCache(cm, com.mecanica.org.domain.Rol.class.getName() + ".empleados");
+            createCache(cm, com.mecanica.org.domain.Pago.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

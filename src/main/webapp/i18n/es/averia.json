@@ -1,0 +1,29 @@
+{
+  "tallerMecanicoPoeApp": {
+    "averia": {
+      "home": {
+        "title": "Averias",
+        "createLabel": "Crear nuevo Averia",
+        "createOrEditLabel": "Crear o editar Averia",
+        "notFound": "Ningún Averias encontrado"
+      },
+      "created": "Un nuevo Averia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Averia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Averia ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Averia {{ id }}?"
+      },
+      "detail": {
+        "title": "Averia"
+      },
+      "fechaAveria": "Fecha Averia",
+      "descripcion": "Descripcion",
+      "pagado": "Pagado",
+      "bitacoraAveria": "Bitacora Averia",
+      "entrada": "Entrada",
+      "pago": "Pago",
+      "automovil": "Automovil",
+      "estadoAveria": "Estado Averia"
+    }
+  }
+}

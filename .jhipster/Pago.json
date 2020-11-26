@@ -1,0 +1,33 @@
+{
+  "name": "Pago",
+  "fields": [
+    {
+      "fieldName": "fechaPago",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "averia",
+      "otherEntityRelationshipName": "pago",
+      "relationshipName": "averia",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201126233741",
+  "entityTableName": "pago",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

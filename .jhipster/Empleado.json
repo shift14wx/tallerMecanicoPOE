@@ -1,0 +1,47 @@
+{
+  "name": "Empleado",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "edad",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dui",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "entrada",
+      "otherEntityRelationshipName": "empleado",
+      "relationshipName": "entrada"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "rol",
+      "otherEntityRelationshipName": "empleado",
+      "relationshipName": "rol",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201126233541",
+  "entityTableName": "empleado",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,27 @@
+{
+  "tallerMecanicoPoeApp": {
+    "entrada": {
+      "home": {
+        "title": "Entradas",
+        "createLabel": "Crear nuevo Entrada",
+        "createOrEditLabel": "Crear o editar Entrada",
+        "notFound": "Ningún Entradas encontrado"
+      },
+      "created": "Un nuevo Entrada ha sido creado con el identificador {{ param }}",
+      "updated": "Un Entrada ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Entrada ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Entrada {{ id }}?"
+      },
+      "detail": {
+        "title": "Entrada"
+      },
+      "descripcion": "Descripcion",
+      "activa": "Activa",
+      "precio": "Precio",
+      "servicio": "Servicio",
+      "averia": "Averia",
+      "empleado": "Empleado"
+    }
+  }
+}

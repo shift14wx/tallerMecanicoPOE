@@ -1,0 +1,35 @@
+{
+  "tallerMecanicoPoeApp": {
+    "automovil": {
+      "home": {
+        "title": "Automovils",
+        "createLabel": "Crear nuevo Automovil",
+        "createOrEditLabel": "Crear o editar Automovil",
+        "notFound": "Ningún Automovils encontrado"
+      },
+      "created": "Un nuevo Automovil ha sido creado con el identificador {{ param }}",
+      "updated": "Un Automovil ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Automovil ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Automovil {{ id }}?"
+      },
+      "detail": {
+        "title": "Automovil"
+      },
+      "placa": "Placa",
+      "modelo": "Modelo",
+      "color": "Color",
+      "year": "Year",
+      "nasientos": "Nasientos",
+      "estadogeneralautomovil": "Estadogeneralautomovil",
+      "numeromotor": "Numeromotor",
+      "numerochasisgrabado": "Numerochasisgrabado",
+      "averia": "Averia",
+      "tipoCombustible": "Tipo Combustible",
+      "clasificacionAutomovil": "Clasificacion Automovil",
+      "cliente": "Cliente",
+      "marca": "Marca",
+      "tipoAutomovil": "Tipo Automovil"
+    }
+  }
+}

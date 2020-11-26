@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Automovil.
+    -->
+    <changeSet id="20201126232441-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="tipo_combustible_id"
+                                 baseTableName="automovil"
+                                 constraintName="fk_automovil_tipo_combustible_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_combustible"/>
+
+        <addForeignKeyConstraint baseColumnNames="clasificacion_automovil_id"
+                                 baseTableName="automovil"
+                                 constraintName="fk_automovil_clasificacion_automovil_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="clasificacion_automovil"/>
+
+        <addForeignKeyConstraint baseColumnNames="cliente_id"
+                                 baseTableName="automovil"
+                                 constraintName="fk_automovil_cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cliente"/>
+
+        <addForeignKeyConstraint baseColumnNames="marca_id"
+                                 baseTableName="automovil"
+                                 constraintName="fk_automovil_marca_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="marca"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_automovil_id"
+                                 baseTableName="automovil"
+                                 constraintName="fk_automovil_tipo_automovil_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_automovil"/>
+
+    </changeSet>
+</databaseChangeLog>

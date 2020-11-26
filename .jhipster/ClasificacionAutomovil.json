@@ -1,0 +1,28 @@
+{
+  "name": "ClasificacionAutomovil",
+  "fields": [
+    {
+      "fieldName": "clasificacion",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "automovil",
+      "otherEntityRelationshipName": "clasificacionAutomovil",
+      "relationshipName": "automovil"
+    }
+  ],
+  "changelogDate": "20201126232641",
+  "entityTableName": "clasificacion_automovil",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

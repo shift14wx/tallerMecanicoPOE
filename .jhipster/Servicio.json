@@ -1,0 +1,28 @@
+{
+  "name": "Servicio",
+  "fields": [
+    {
+      "fieldName": "servicio",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "entrada",
+      "otherEntityRelationshipName": "servicio",
+      "relationshipName": "entrada"
+    }
+  ],
+  "changelogDate": "20201126233241",
+  "entityTableName": "servicio",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

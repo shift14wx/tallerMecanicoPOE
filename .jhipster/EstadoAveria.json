@@ -1,0 +1,32 @@
+{
+  "name": "EstadoAveria",
+  "fields": [
+    {
+      "fieldName": "estado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "averia",
+      "otherEntityRelationshipName": "estadoAveria",
+      "relationshipName": "averia"
+    }
+  ],
+  "changelogDate": "20201126233141",
+  "entityTableName": "estado_averia",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

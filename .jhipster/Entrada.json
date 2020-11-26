@@ -1,0 +1,51 @@
+{
+  "name": "Entrada",
+  "fields": [
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activa",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "precio",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "servicio",
+      "otherEntityRelationshipName": "entrada",
+      "relationshipName": "servicio",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "averia",
+      "otherEntityRelationshipName": "entrada",
+      "relationshipName": "averia",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "empleado",
+      "otherEntityRelationshipName": "entrada",
+      "relationshipName": "empleado",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201126233441",
+  "entityTableName": "entrada",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

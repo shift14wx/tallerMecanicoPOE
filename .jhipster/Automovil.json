@@ -1,0 +1,91 @@
+{
+  "name": "Automovil",
+  "fields": [
+    {
+      "fieldName": "placa",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modelo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nasientos",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "estadogeneralautomovil",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeromotor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numerochasisgrabado",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "averia",
+      "otherEntityRelationshipName": "automovil",
+      "relationshipName": "averia"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoCombustible",
+      "otherEntityRelationshipName": "automovil",
+      "relationshipName": "tipoCombustible",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "clasificacionAutomovil",
+      "otherEntityRelationshipName": "automovil",
+      "relationshipName": "clasificacionAutomovil",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cliente",
+      "otherEntityRelationshipName": "automovil",
+      "relationshipName": "cliente",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "marca",
+      "otherEntityRelationshipName": "automovil",
+      "relationshipName": "marca",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoAutomovil",
+      "otherEntityRelationshipName": "automovil",
+      "relationshipName": "tipoAutomovil",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201126232441",
+  "entityTableName": "automovil",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

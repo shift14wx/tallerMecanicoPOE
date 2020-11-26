@@ -32,6 +32,62 @@
                         <font-awesome-icon icon="th-list" />
                         <span v-text="$t('global.menu.entities.main')">Entities</span>
                     </span>
+                    <b-dropdown-item to="/automovil">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.automovil')">Automovil</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/tipo-combustible">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.tipoCombustible')">TipoCombustible</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/clasificacion-automovil">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.clasificacionAutomovil')">ClasificacionAutomovil</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/cliente">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.cliente')">Cliente</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/marca">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.marca')">Marca</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/tipo-automovil">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.tipoAutomovil')">TipoAutomovil</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/averia">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.averia')">Averia</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/estado-averia">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.estadoAveria')">EstadoAveria</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/servicio">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.servicio')">Servicio</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/bitacora-averia">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.bitacoraAveria')">BitacoraAveria</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/entrada">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.entrada')">Entrada</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/empleado">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.empleado')">Empleado</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/rol">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.rol')">Rol</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/pago">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.pago')">Pago</span>
+                    </b-dropdown-item>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown

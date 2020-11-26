@@ -1,0 +1,23 @@
+{
+  "tallerMecanicoPoeApp": {
+    "clasificacionAutomovil": {
+      "home": {
+        "title": "Clasificacion Automovils",
+        "createLabel": "Crear nuevo Clasificacion Automovil",
+        "createOrEditLabel": "Crear o editar Clasificacion Automovil",
+        "notFound": "Ningún Clasificacion Automovils encontrado"
+      },
+      "created": "Un nuevo Clasificacion Automovil ha sido creado con el identificador {{ param }}",
+      "updated": "Un Clasificacion Automovil ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Clasificacion Automovil ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Clasificacion Automovil {{ id }}?"
+      },
+      "detail": {
+        "title": "Clasificacion Automovil"
+      },
+      "clasificacion": "Clasificacion",
+      "automovil": "Automovil"
+    }
+  }
+}

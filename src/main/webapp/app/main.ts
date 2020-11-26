@@ -29,6 +29,20 @@ import ConfigurationService from '@/admin/configuration/configuration.service';
 
 /* tslint:disable */
 
+import AutomovilService from '@/entities/automovil/automovil.service';
+import TipoCombustibleService from '@/entities/tipo-combustible/tipo-combustible.service';
+import ClasificacionAutomovilService from '@/entities/clasificacion-automovil/clasificacion-automovil.service';
+import ClienteService from '@/entities/cliente/cliente.service';
+import MarcaService from '@/entities/marca/marca.service';
+import TipoAutomovilService from '@/entities/tipo-automovil/tipo-automovil.service';
+import AveriaService from '@/entities/averia/averia.service';
+import EstadoAveriaService from '@/entities/estado-averia/estado-averia.service';
+import ServicioService from '@/entities/servicio/servicio.service';
+import BitacoraAveriaService from '@/entities/bitacora-averia/bitacora-averia.service';
+import EntradaService from '@/entities/entrada/entrada.service';
+import EmpleadoService from '@/entities/empleado/empleado.service';
+import RolService from '@/entities/rol/rol.service';
+import PagoService from '@/entities/pago/pago.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -91,6 +105,20 @@ new Vue({
     metricsService: () => new MetricsService(),
     alertService: () => alertService,
     translationService: () => translationService,
+    automovilService: () => new AutomovilService(),
+    tipoCombustibleService: () => new TipoCombustibleService(),
+    clasificacionAutomovilService: () => new ClasificacionAutomovilService(),
+    clienteService: () => new ClienteService(),
+    marcaService: () => new MarcaService(),
+    tipoAutomovilService: () => new TipoAutomovilService(),
+    averiaService: () => new AveriaService(),
+    estadoAveriaService: () => new EstadoAveriaService(),
+    servicioService: () => new ServicioService(),
+    bitacoraAveriaService: () => new BitacoraAveriaService(),
+    entradaService: () => new EntradaService(),
+    empleadoService: () => new EmpleadoService(),
+    rolService: () => new RolService(),
+    pagoService: () => new PagoService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

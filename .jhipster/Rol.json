@@ -1,0 +1,28 @@
+{
+  "name": "Rol",
+  "fields": [
+    {
+      "fieldName": "rol",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "empleado",
+      "otherEntityRelationshipName": "rol",
+      "relationshipName": "empleado"
+    }
+  ],
+  "changelogDate": "20201126233641",
+  "entityTableName": "rol",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

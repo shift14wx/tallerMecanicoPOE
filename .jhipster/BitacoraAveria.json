@@ -1,0 +1,33 @@
+{
+  "name": "BitacoraAveria",
+  "fields": [
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaBitacora",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "averia",
+      "otherEntityRelationshipName": "bitacoraAveria",
+      "relationshipName": "averia",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201126233341",
+  "entityTableName": "bitacora_averia",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

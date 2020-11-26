@@ -1,0 +1,62 @@
+{
+  "name": "Averia",
+  "fields": [
+    {
+      "fieldName": "fechaAveria",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pagado",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "bitacoraAveria",
+      "otherEntityRelationshipName": "averia",
+      "relationshipName": "bitacoraAveria"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "entrada",
+      "otherEntityRelationshipName": "averia",
+      "relationshipName": "entrada"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pago",
+      "otherEntityRelationshipName": "averia",
+      "relationshipName": "pago"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "automovil",
+      "otherEntityRelationshipName": "averia",
+      "relationshipName": "automovil",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "estadoAveria",
+      "otherEntityRelationshipName": "averia",
+      "relationshipName": "estadoAveria",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201126233041",
+  "entityTableName": "averia",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

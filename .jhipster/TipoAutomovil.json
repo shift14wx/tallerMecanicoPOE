@@ -1,0 +1,28 @@
+{
+  "name": "TipoAutomovil",
+  "fields": [
+    {
+      "fieldName": "tipo",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "automovil",
+      "otherEntityRelationshipName": "tipoAutomovil",
+      "relationshipName": "automovil"
+    }
+  ],
+  "changelogDate": "20201126232941",
+  "entityTableName": "tipo_automovil",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

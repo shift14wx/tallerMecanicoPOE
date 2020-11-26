@@ -1,0 +1,28 @@
+{
+  "name": "TipoCombustible",
+  "fields": [
+    {
+      "fieldName": "combustible",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "automovil",
+      "otherEntityRelationshipName": "tipoCombustible",
+      "relationshipName": "automovil"
+    }
+  ],
+  "changelogDate": "20201126232541",
+  "entityTableName": "tipo_combustible",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
