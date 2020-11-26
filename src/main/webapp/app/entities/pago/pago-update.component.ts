@@ -29,14 +29,25 @@ export default class PagoUpdate extends Vue {
   public averias: IAveria[] = [];
   public isSaving = false;
   public currentLanguage = '';
+  public averiaId: number = 0;
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.pagoId) {
         vm.retrievePago(to.params.pagoId);
       }
+      if (to.params.averiaId) {
+        vm.setIdAveria(to.params.averiaId);
+      }
       vm.initRelationships();
     });
+  }
+
+  public setIdAveria(idAveria: number = 0) {
+    console.log('id averia encontrada ' + idAveria.toString());
+    if (idAveria > 0) {
+      this.averiaId = idAveria;
+    }
   }
 
   created(): void {
@@ -56,7 +67,8 @@ export default class PagoUpdate extends Vue {
         .update(this.pago)
         .then(param => {
           this.isSaving = false;
-          this.$router.go(-1);
+          // @ts-ignore
+          this.$router.push({ name: 'Pago', params: { averiaId: this.averiaId > 0 ? this.averiaId : null } });
           const message = this.$t('tallerMecanicoPoeApp.pago.updated', { param: param.id });
           this.alertService().showAlert(message, 'info');
         });
@@ -65,7 +77,8 @@ export default class PagoUpdate extends Vue {
         .create(this.pago)
         .then(param => {
           this.isSaving = false;
-          this.$router.go(-1);
+          // @ts-ignore
+          this.$router.push({ name: 'Pago', params: { averiaId: this.averiaId > 0 ? this.averiaId : null } });
           const message = this.$t('tallerMecanicoPoeApp.pago.created', { param: param.id });
           this.alertService().showAlert(message, 'success');
         });
@@ -81,7 +94,8 @@ export default class PagoUpdate extends Vue {
   }
 
   public previousState(): void {
-    this.$router.go(-1);
+    // @ts-ignore
+    this.$router.push({ name: 'Pago', params: { averiaId: this.averiaId > 0 ? this.averiaId : null } });
   }
 
   public initRelationships(): void {
@@ -89,6 +103,13 @@ export default class PagoUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.averias = res.data;
+        this.setAveriaFound();
       });
+  }
+
+  public setAveriaFound() {
+    if (this.averiaId > 0) {
+      this.pago.averia = this.averias.find(averia => (averia.id = this.averiaId));
+    }
   }
 }

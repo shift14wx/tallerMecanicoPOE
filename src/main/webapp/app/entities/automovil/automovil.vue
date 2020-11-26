@@ -57,27 +57,28 @@
                     <td>{{automovil.numerochasisgrabado}}</td>
                     <td>
                         <div v-if="automovil.tipoCombustible">
-                            <router-link :to="{name: 'TipoCombustibleView', params: {tipoCombustibleId: automovil.tipoCombustible.id}}">{{automovil.tipoCombustible.id}}</router-link>
+                            <router-link :to="{name: 'TipoCombustibleView', params: {tipoCombustibleId: automovil.tipoCombustible.id}}">{{ automovil.tipoCombustible.id}}-){{automovil.tipoCombustible.combustible}}</router-link>
                         </div>
                     </td>
                     <td>
                         <div v-if="automovil.clasificacionAutomovil">
-                            <router-link :to="{name: 'ClasificacionAutomovilView', params: {clasificacionAutomovilId: automovil.clasificacionAutomovil.id}}">{{automovil.clasificacionAutomovil.id}}</router-link>
+                            <router-link :to="{name: 'ClasificacionAutomovilView', params: {clasificacionAutomovilId: automovil.clasificacionAutomovil.id}}">{{automovil.clasificacionAutomovil.id}}-){{automovil.clasificacionAutomovil.clasificacion}} </router-link>
                         </div>
                     </td>
                     <td>
                         <div v-if="automovil.cliente">
-                            <router-link :to="{name: 'ClienteView', params: {clienteId: automovil.cliente.id}}">{{automovil.cliente.id}}</router-link>
+                            <router-link :to="{name: 'ClienteView', params: {clienteId: automovil.cliente.id}}">{{automovil.cliente.id}}-){{automovil.cliente.nombre}}</router-link>
                         </div>
                     </td>
                     <td>
                         <div v-if="automovil.marca">
-                            <router-link :to="{name: 'MarcaView', params: {marcaId: automovil.marca.id}}">{{automovil.marca.id}}</router-link>
+                            <router-link :to="{name: 'MarcaView', params: {marcaId: automovil.marca.id}}">{{automovil.marca.id}}-){{automovil.marca.marca}}</router-link>
                         </div>
                     </td>
                     <td>
+
                         <div v-if="automovil.tipoAutomovil">
-                            <router-link :to="{name: 'TipoAutomovilView', params: {tipoAutomovilId: automovil.tipoAutomovil.id}}">{{automovil.tipoAutomovil.id}}</router-link>
+                            <router-link :to="{name: 'TipoAutomovilView', params: {tipoAutomovilId: automovil.tipoAutomovil.id}}">{{automovil.tipoAutomovil.id}}-){{automovil.tipoAutomovil.tipo}}</router-link>
                         </div>
                     </td>
                     <td class="text-right">

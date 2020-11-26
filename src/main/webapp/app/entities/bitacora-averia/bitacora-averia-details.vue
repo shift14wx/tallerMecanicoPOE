@@ -21,7 +21,7 @@
                     </dt>
                     <dd>
                         <div v-if="bitacoraAveria.averia">
-                            <router-link :to="{name: 'AveriaView', params: {averiaId: bitacoraAveria.averia.id}}">{{bitacoraAveria.averia.id}}</router-link>
+                            <router-link :to="{name: 'AveriaView', params: {averiaId: bitacoraAveria.averia.id}}">{{bitacoraAveria.averia.id}} -) {{bitacoraAveria.averia.descripcion}}</router-link>
                         </div>
                     </dd>
                 </dl>

@@ -39,7 +39,7 @@
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.bitacoraAveria.averia')" for="bitacora-averia-averia">Averia</label>
                         <select class="form-control" id="bitacora-averia-averia" name="averia" v-model="bitacoraAveria.averia">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="bitacoraAveria.averia && averiaOption.id === bitacoraAveria.averia.id ? bitacoraAveria.averia : averiaOption" v-for="averiaOption in averias" :key="averiaOption.id">{{averiaOption.id}}</option>
+                            <option v-bind:value="bitacoraAveria.averia && averiaOption.id === bitacoraAveria.averia.id ? bitacoraAveria.averia : averiaOption" v-for="averiaOption in averias" :key="averiaOption.id">{{averiaOption.id}}  -) {{averiaOption.descripcion}}</option>
                         </select>
                     </div>
                 </div>

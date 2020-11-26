@@ -2,8 +2,8 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
 
-import EntradaService from '../entrada/entrada.service';
-import { IEntrada } from '@/shared/model/entrada.model';
+import AveriaService from '../averia/averia.service';
+import { IAveria } from '@/shared/model/averia.model';
 
 import AlertService from '@/shared/alert/alert.service';
 import { IServicio, Servicio } from '@/shared/model/servicio.model';
@@ -23,9 +23,9 @@ export default class ServicioUpdate extends Vue {
   @Inject('servicioService') private servicioService: () => ServicioService;
   public servicio: IServicio = new Servicio();
 
-  @Inject('entradaService') private entradaService: () => EntradaService;
+  @Inject('averiaService') private averiaService: () => AveriaService;
 
-  public entradas: IEntrada[] = [];
+  public averias: IAveria[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -84,10 +84,10 @@ export default class ServicioUpdate extends Vue {
   }
 
   public initRelationships(): void {
-    this.entradaService()
+    this.averiaService()
       .retrieve()
       .then(res => {
-        this.entradas = res.data;
+        this.averias = res.data;
       });
   }
 }

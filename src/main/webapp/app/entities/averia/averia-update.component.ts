@@ -11,8 +11,8 @@ import { IEntrada } from '@/shared/model/entrada.model';
 import PagoService from '../pago/pago.service';
 import { IPago } from '@/shared/model/pago.model';
 
-import AutomovilService from '../automovil/automovil.service';
-import { IAutomovil } from '@/shared/model/automovil.model';
+import ServicioService from '../servicio/servicio.service';
+import { IServicio } from '@/shared/model/servicio.model';
 
 import EstadoAveriaService from '../estado-averia/estado-averia.service';
 import { IEstadoAveria } from '@/shared/model/estado-averia.model';
@@ -25,7 +25,6 @@ const validations: any = {
   averia: {
     fechaAveria: {},
     descripcion: {},
-    pagado: {},
   },
 };
 
@@ -49,9 +48,9 @@ export default class AveriaUpdate extends Vue {
 
   public pagos: IPago[] = [];
 
-  @Inject('automovilService') private automovilService: () => AutomovilService;
+  @Inject('servicioService') private servicioService: () => ServicioService;
 
-  public automovils: IAutomovil[] = [];
+  public servicios: IServicio[] = [];
 
   @Inject('estadoAveriaService') private estadoAveriaService: () => EstadoAveriaService;
 
@@ -129,10 +128,10 @@ export default class AveriaUpdate extends Vue {
       .then(res => {
         this.pagos = res.data;
       });
-    this.automovilService()
+    this.servicioService()
       .retrieve()
       .then(res => {
-        this.automovils = res.data;
+        this.servicios = res.data;
       });
     this.estadoAveriaService()
       .retrieve()

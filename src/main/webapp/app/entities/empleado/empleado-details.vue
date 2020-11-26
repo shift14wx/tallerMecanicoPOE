@@ -33,7 +33,7 @@
                     </dt>
                     <dd>
                         <div v-if="empleado.rol">
-                            <router-link :to="{name: 'RolView', params: {rolId: empleado.rol.id}}">{{empleado.rol.id}}</router-link>
+                            <router-link :to="{name: 'RolView', params: {rolId: empleado.rol.id}}">{{empleado.rol.rol}}</router-link>
                         </div>
                     </dd>
                 </dl>

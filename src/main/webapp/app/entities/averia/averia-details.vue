@@ -17,17 +17,11 @@
                         <span>{{averia.descripcion}}</span>
                     </dd>
                     <dt>
-                        <span v-text="$t('tallerMecanicoPoeApp.averia.pagado')">Pagado</span>
+                        <span v-text="$t('tallerMecanicoPoeApp.averia.servicio')">Servicio</span>
                     </dt>
                     <dd>
-                        <span>{{averia.pagado}}</span>
-                    </dd>
-                    <dt>
-                        <span v-text="$t('tallerMecanicoPoeApp.averia.automovil')">Automovil</span>
-                    </dt>
-                    <dd>
-                        <div v-if="averia.automovil">
-                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}}</router-link>
+                        <div v-if="averia.servicio">
+                            <router-link :to="{name: 'ServicioView', params: {servicioId: averia.servicio.id}}">{{averia.servicio.id}}</router-link>
                         </div>
                     </dd>
                     <dt>

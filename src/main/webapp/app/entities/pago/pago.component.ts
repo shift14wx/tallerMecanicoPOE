@@ -16,30 +16,65 @@ export default class Pago extends mixins(AlertMixin) {
 
   public pagos: IPago[] = [];
 
+  public idAveria: number = 0;
+
   public isFetching = false;
 
+  // fetching averiaId for get all de payments of this averiaId
+
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (to.params.averiaId) {
+        vm.retrieveAllPagos(to.params.averiaId);
+        vm.setAveriaId(to.params.averiaId);
+      } else {
+        vm.retrieveAllPagos();
+      }
+    });
+  }
+
+  public setAveriaId(averiaId = null) {
+    if (averiaId) {
+      this.idAveria = averiaId;
+    }
+  }
+
   public mounted(): void {
-    this.retrieveAllPagos();
+    //this.retrieveAllPagos();
   }
 
   public clear(): void {
     this.retrieveAllPagos();
   }
 
-  public retrieveAllPagos(): void {
+  public retrieveAllPagos(averiaId = null): void {
     this.isFetching = true;
 
-    this.pagoService()
-      .retrieve()
-      .then(
-        res => {
-          this.pagos = res.data;
-          this.isFetching = false;
-        },
-        err => {
-          this.isFetching = false;
-        }
-      );
+    if (averiaId) {
+      this.pagoService()
+        .findPagosAveria(averiaId)
+        .then(
+          res => {
+            this.pagos = res.data;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    } else {
+      this.pagoService()
+        .retrieve()
+        .then(
+          res => {
+            this.pagos = res.data;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    }
   }
 
   public prepareRemove(instance: IPago): void {
@@ -57,7 +92,7 @@ export default class Pago extends mixins(AlertMixin) {
         this.alertService().showAlert(message, 'danger');
         this.getAlertFromStore();
         this.removeId = null;
-        this.retrieveAllPagos();
+        this.retrieveAllPagos(this.idAveria > 0 ? this.idAveria : null);
         this.closeDialog();
       });
   }

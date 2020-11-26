@@ -18,6 +18,19 @@ export default class PagoService {
     });
   }
 
+  // find averia's payments
+  public findPagosAveria(averiaId: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}?averiaId=${averiaId}`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
   public retrieve(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

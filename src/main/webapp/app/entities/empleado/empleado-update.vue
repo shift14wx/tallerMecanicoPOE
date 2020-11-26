@@ -33,7 +33,7 @@
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.empleado.rol')" for="empleado-rol">Rol</label>
                         <select class="form-control" id="empleado-rol" name="rol" v-model="empleado.rol">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="empleado.rol && rolOption.id === empleado.rol.id ? empleado.rol : rolOption" v-for="rolOption in rols" :key="rolOption.id">{{rolOption.id}}</option>
+                            <option v-bind:value="empleado.rol && rolOption.id === empleado.rol.id ? empleado.rol : rolOption" v-for="rolOption in rols" :key="rolOption.id">{{rolOption.rol}}</option>
                         </select>
                     </div>
                 </div>

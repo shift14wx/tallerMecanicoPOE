@@ -2,9 +2,6 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
 
-import AveriaService from '../averia/averia.service';
-import { IAveria } from '@/shared/model/averia.model';
-
 import TipoCombustibleService from '../tipo-combustible/tipo-combustible.service';
 import { ITipoCombustible } from '@/shared/model/tipo-combustible.model';
 
@@ -44,10 +41,6 @@ export default class AutomovilUpdate extends Vue {
   @Inject('alertService') private alertService: () => AlertService;
   @Inject('automovilService') private automovilService: () => AutomovilService;
   public automovil: IAutomovil = new Automovil();
-
-  @Inject('averiaService') private averiaService: () => AveriaService;
-
-  public averias: IAveria[] = [];
 
   @Inject('tipoCombustibleService') private tipoCombustibleService: () => TipoCombustibleService;
 
@@ -126,11 +119,6 @@ export default class AutomovilUpdate extends Vue {
   }
 
   public initRelationships(): void {
-    this.averiaService()
-      .retrieve()
-      .then(res => {
-        this.averias = res.data;
-      });
     this.tipoCombustibleService()
       .retrieve()
       .then(res => {

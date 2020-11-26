@@ -53,35 +53,35 @@
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.automovil.tipoCombustible')" for="automovil-tipoCombustible">Tipo Combustible</label>
                         <select class="form-control" id="automovil-tipoCombustible" name="tipoCombustible" v-model="automovil.tipoCombustible">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="automovil.tipoCombustible && tipoCombustibleOption.id === automovil.tipoCombustible.id ? automovil.tipoCombustible : tipoCombustibleOption" v-for="tipoCombustibleOption in tipoCombustibles" :key="tipoCombustibleOption.id">{{tipoCombustibleOption.id}}</option>
+                            <option v-bind:value="automovil.tipoCombustible && tipoCombustibleOption.id === automovil.tipoCombustible.id ? automovil.tipoCombustible : tipoCombustibleOption" v-for="tipoCombustibleOption in tipoCombustibles" :key="tipoCombustibleOption.id">{{tipoCombustibleOption.combustible}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.automovil.clasificacionAutomovil')" for="automovil-clasificacionAutomovil">Clasificacion Automovil</label>
                         <select class="form-control" id="automovil-clasificacionAutomovil" name="clasificacionAutomovil" v-model="automovil.clasificacionAutomovil">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="automovil.clasificacionAutomovil && clasificacionAutomovilOption.id === automovil.clasificacionAutomovil.id ? automovil.clasificacionAutomovil : clasificacionAutomovilOption" v-for="clasificacionAutomovilOption in clasificacionAutomovils" :key="clasificacionAutomovilOption.id">{{clasificacionAutomovilOption.id}}</option>
+                            <option v-bind:value="automovil.clasificacionAutomovil && clasificacionAutomovilOption.id === automovil.clasificacionAutomovil.id ? automovil.clasificacionAutomovil : clasificacionAutomovilOption" v-for="clasificacionAutomovilOption in clasificacionAutomovils" :key="clasificacionAutomovilOption.id">{{clasificacionAutomovilOption.clasificacion}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.automovil.cliente')" for="automovil-cliente">Cliente</label>
                         <select class="form-control" id="automovil-cliente" name="cliente" v-model="automovil.cliente">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="automovil.cliente && clienteOption.id === automovil.cliente.id ? automovil.cliente : clienteOption" v-for="clienteOption in clientes" :key="clienteOption.id">{{clienteOption.id}}</option>
+                            <option v-bind:value="automovil.cliente && clienteOption.id === automovil.cliente.id ? automovil.cliente : clienteOption" v-for="clienteOption in clientes" :key="clienteOption.id">{{clienteOption.nombre}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.automovil.marca')" for="automovil-marca">Marca</label>
                         <select class="form-control" id="automovil-marca" name="marca" v-model="automovil.marca">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="automovil.marca && marcaOption.id === automovil.marca.id ? automovil.marca : marcaOption" v-for="marcaOption in marcas" :key="marcaOption.id">{{marcaOption.id}}</option>
+                            <option v-bind:value="automovil.marca && marcaOption.id === automovil.marca.id ? automovil.marca : marcaOption" v-for="marcaOption in marcas" :key="marcaOption.id">{{marcaOption.marca}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.automovil.tipoAutomovil')" for="automovil-tipoAutomovil">Tipo Automovil</label>
                         <select class="form-control" id="automovil-tipoAutomovil" name="tipoAutomovil" v-model="automovil.tipoAutomovil">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="automovil.tipoAutomovil && tipoAutomovilOption.id === automovil.tipoAutomovil.id ? automovil.tipoAutomovil : tipoAutomovilOption" v-for="tipoAutomovilOption in tipoAutomovils" :key="tipoAutomovilOption.id">{{tipoAutomovilOption.id}}</option>
+                            <option v-bind:value="automovil.tipoAutomovil && tipoAutomovilOption.id === automovil.tipoAutomovil.id ? automovil.tipoAutomovil : tipoAutomovilOption" v-for="tipoAutomovilOption in tipoAutomovils" :key="tipoAutomovilOption.id">{{tipoAutomovilOption.tipo}}</option>
                         </select>
                     </div>
                 </div>
