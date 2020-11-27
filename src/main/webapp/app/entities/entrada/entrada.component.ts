@@ -16,8 +16,25 @@ export default class Entrada extends mixins(AlertMixin) {
 
   public entradas: IEntrada[] = [];
 
+  public idAveria: number = 0;
+
   public isFetching = false;
 
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (to.params.averiaId) {
+        vm.retrieveAllPagos(to.params.averiaId);
+        vm.setAveriaId(to.params.averiaId);
+      } else {
+        vm.retrieveAllPagos();
+      }
+    });
+  }
+  public setAveriaId(averiaId = null) {
+    if (averiaId) {
+      this.idAveria = averiaId;
+    }
+  }
   public mounted(): void {
     this.retrieveAllEntradas();
   }

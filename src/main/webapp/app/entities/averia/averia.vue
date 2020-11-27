@@ -31,6 +31,7 @@
                     <th><span v-text="$t('tallerMecanicoPoeApp.averia.estado')">Estado averia</span></th>
                     <th><span v-text="$t('tallerMecanicoPoeApp.averia.RealEstado')" >Estado de pagos</span></th>
                     <th><span v-text="$t('tallerMecanicoPoeApp.averia.IrPagos')">Ver Pagos</span></th>
+                    <td><span v-text="$t('tallerMecanicoPoeApp.averia.VerDetalles')"></span></td>
                     <th></th>
                 </tr>
                 </thead>
@@ -56,9 +57,15 @@
                         <div :class="{'alert alert-warning':!averia.pagado,'alert alert-success': averia.pagado}">{{ !averia.pagado ? 'Pendiente' : 'Solventada'}}</div>
                     </td>
                     <td>
-                        <router-link :to="{name: 'Pago', params: {averiaId: averia.id}}" tag="button" class="btn btn-info btn-sm details">
+                        <router-link :to="{name: 'Pago', params: {averiaId: averia.id}}" tag="button" class="btn btn-primary btn-sm">
                             <font-awesome-icon icon="eye"></font-awesome-icon>
                             <span class="d-none d-md-inline" >Ver Pagos</span>
+                        </router-link>
+                    </td>
+                    <td>
+                        <router-link :to="{name: 'Entrada', params: {averiaId: averia.id}}" tag="button" class="btn btn-primary btn-sm">
+                            <font-awesome-icon icon="eye"></font-awesome-icon>
+                            <span class="d-none d-md-inline" >Ver Detalles</span>
                         </router-link>
                     </td>
                     <td class="text-right">

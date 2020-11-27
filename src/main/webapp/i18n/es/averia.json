@@ -25,7 +25,8 @@
       "IrPagos": "Ver Pagos",
       "RealEstado": "Estado de Pagos",
       "estado": "Estado Averia",
-      "automovil": "Automovil"
+      "automovil": "Automovil",
+      "VerDetalles": "Detalles"
     }
   }
 }
