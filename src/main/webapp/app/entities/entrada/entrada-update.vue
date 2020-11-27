@@ -28,7 +28,7 @@
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.entrada.servicio')" for="entrada-servicio">Servicio</label>
                         <select class="form-control" id="entrada-servicio" name="servicio" v-model="entrada.servicio">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="entrada.servicio && servicioOption.id === entrada.servicio.id ? entrada.servicio : servicioOption" v-for="servicioOption in servicios" :key="servicioOption.id">{{servicioOption.id}}</option>
+                            <option v-bind:value="entrada.servicio && servicioOption.id === entrada.servicio.id ? entrada.servicio : servicioOption" v-for="servicioOption in servicios" :key="servicioOption.id">{{servicioOption.servicio}}</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -43,7 +43,7 @@
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.entrada.empleado')" for="entrada-empleado">Empleado</label>
                         <select class="form-control" id="entrada-empleado" name="empleado" v-model="entrada.empleado">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="entrada.empleado && empleadoOption.id === entrada.empleado.id ? entrada.empleado : empleadoOption" v-for="empleadoOption in empleados" :key="empleadoOption.id">{{empleadoOption.id}}</option>
+                            <option v-bind:value="entrada.empleado && empleadoOption.id === entrada.empleado.id ? entrada.empleado : empleadoOption" v-for="empleadoOption in empleados" :key="empleadoOption.id">{{empleadoOption.nombre}}</option>
                         </select>
                     </div>
                 </div>
