@@ -2,7 +2,7 @@
   "tallerMecanicoPoeApp": {
     "automovil": {
       "home": {
-        "title": "Automoviles",
+        "title": "Automovils",
         "createLabel": "Crear nuevo Automovil",
         "createOrEditLabel": "Crear o editar Automovil",
         "notFound": "Ningún Automovils encontrado"
@@ -19,11 +19,11 @@
       "placa": "Placa",
       "modelo": "Modelo",
       "color": "Color",
-      "year": "Año",
-      "nasientos": "Numero de asientos",
-      "estadogeneralautomovil": "Estado general automovil",
-      "numeromotor": "Numero de motor",
-      "numerochasisgrabado": "Numero chasis grabado",
+      "year": "Year",
+      "nasientos": "Nasientos",
+      "estadogeneralautomovil": "Estadogeneralautomovil",
+      "numeromotor": "Numeromotor",
+      "numerochasisgrabado": "Numerochasisgrabado",
       "tipoCombustible": "Tipo Combustible",
       "clasificacionAutomovil": "Clasificacion Automovil",
       "cliente": "Cliente",

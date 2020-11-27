@@ -26,9 +26,10 @@
                 <tr>
                     <th><span v-text="$t('global.field.id')">ID</span></th>
                     <th><span v-text="$t('tallerMecanicoPoeApp.averia.fechaAveria')">Fecha Averia</span></th>
-                    <th><span v-text="$t('tallerMecanicoPoeApp.averia.descripcion')">Descripcion</span></th>
-                    <th><span v-text="$t('tallerMecanicoPoeApp.averia.servicio')">Servicio</span></th>
-                    <th><span v-text="$t('tallerMecanicoPoeApp.averia.estadoAveria')">Estado Averia</span></th>
+                    <th><span >Descripcion</span></th>
+                    <th><span v-text="$t('tallerMecanicoPoeApp.averia.automovil')">Automovil</span></th>
+                    <th><span v-text="$t('tallerMecanicoPoeApp.averia.estado')">Estado averia</span></th>
+                    <th><span v-text="$t('tallerMecanicoPoeApp.averia.RealEstado')" >Estado de pagos</span></th>
                     <th><span v-text="$t('tallerMecanicoPoeApp.averia.IrPagos')">Ver Pagos</span></th>
                     <th></th>
                 </tr>
@@ -42,14 +43,17 @@
                     <td>{{averia.fechaAveria}}</td>
                     <td>{{averia.descripcion}}</td>
                     <td>
-                        <div v-if="averia.servicio">
-                            <router-link :to="{name: 'ServicioView', params: {servicioId: averia.servicio.id}}">{{averia.servicio.servicio}}</router-link>
+                        <div v-if="averia.automovil">
+                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}} -) {{ averia.automovil.marca }} {{ averia.automovil.modelo }}</router-link>
                         </div>
                     </td>
                     <td>
                         <div v-if="averia.estadoAveria">
                             <router-link :to="{name: 'EstadoAveriaView', params: {estadoAveriaId: averia.estadoAveria.id}}">{{averia.estadoAveria.estado}}</router-link>
                         </div>
+                    </td>
+                    <td>
+                        <div :class="{'alert alert-warning':!averia.pagado,'alert alert-success': averia.pagado}">{{ !averia.pagado ? 'Pendiente' : 'Solventada'}}</div>
                     </td>
                     <td>
                         <router-link :to="{name: 'Pago', params: {averiaId: averia.id}}" tag="button" class="btn btn-info btn-sm details">

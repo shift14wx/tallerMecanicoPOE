@@ -1,0 +1,23 @@
+{
+  "tallerMecanicoPoeApp": {
+    "tipoCombustible": {
+      "home": {
+        "title": "Tipo Combustibles",
+        "createLabel": "Crear nuevo Tipo Combustible",
+        "createOrEditLabel": "Crear o editar Tipo Combustible",
+        "notFound": "Ningún Tipo Combustibles encontrado"
+      },
+      "created": "Un nuevo Tipo Combustible ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Combustible ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Combustible ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Combustible {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Combustible"
+      },
+      "combustible": "Combustible",
+      "automovil": "Automovil"
+    }
+  }
+}

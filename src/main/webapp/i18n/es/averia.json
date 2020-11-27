@@ -3,13 +3,13 @@
     "averia": {
       "home": {
         "title": "Averias",
-        "createLabel": "Crear nuevo Averia",
+        "createLabel": "Crear nueva Averia",
         "createOrEditLabel": "Crear o editar Averia",
-        "notFound": "Ningún Averias encontrado"
+        "notFound": "Ninguna Averia encontrada"
       },
-      "created": "Un nuevo Averia ha sido creado con el identificador {{ param }}",
-      "updated": "Un Averia ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Averia ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Averia ha sido creada con el identificador {{ param }}",
+      "updated": "Una Averia ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Averia ha sido eliminada con el identificador {{ param }}",
       "delete": {
         "question": "¿Seguro que quiere eliminar Averia {{ id }}?"
       },
@@ -18,12 +18,14 @@
       },
       "fechaAveria": "Fecha Averia",
       "descripcion": "Descripcion",
-      "pagado": "Pagado",
       "bitacoraAveria": "Bitacora Averia",
       "entrada": "Entrada",
-      "pago": "Pago",
-      "automovil": "Automovil",
-      "estadoAveria": "Estado Averia"
+      "servicio": "Servicio",
+      "estadoAveria": "Estado Averia",
+      "IrPagos": "Ver Pagos",
+      "RealEstado": "Estado de Pagos",
+      "estado": "Estado Averia",
+      "automovil": "Automovil"
     }
   }
 }

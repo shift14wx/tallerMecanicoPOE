@@ -3,13 +3,13 @@
     "clasificacionAutomovil": {
       "home": {
         "title": "Clasificacion Automovils",
-        "createLabel": "Crear nueva Clasificacion Automovil",
+        "createLabel": "Crear nuevo Clasificacion Automovil",
         "createOrEditLabel": "Crear o editar Clasificacion Automovil",
         "notFound": "Ningún Clasificacion Automovils encontrado"
       },
-      "created": "Una nuevo Clasificacion Automovil ha sido creada con el identificador {{ param }}",
-      "updated": "Una Clasificacion Automovil ha sido actualizada con el identificador {{ param }}",
-      "deleted": "Una Clasificacion Automovil ha sido eliminada con el identificador {{ param }}",
+      "created": "Un nuevo Clasificacion Automovil ha sido creado con el identificador {{ param }}",
+      "updated": "Un Clasificacion Automovil ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Clasificacion Automovil ha sido eliminado con el identificador {{ param }}",
       "delete": {
         "question": "¿Seguro que quiere eliminar Clasificacion Automovil {{ id }}?"
       },

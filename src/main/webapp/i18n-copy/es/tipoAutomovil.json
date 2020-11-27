@@ -1,0 +1,23 @@
+{
+  "tallerMecanicoPoeApp": {
+    "tipoAutomovil": {
+      "home": {
+        "title": "Tipo Automovils",
+        "createLabel": "Crear nuevo Tipo Automovil",
+        "createOrEditLabel": "Crear o editar Tipo Automovil",
+        "notFound": "Ningún Tipo Automovils encontrado"
+      },
+      "created": "Un nuevo Tipo Automovil ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Automovil ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Automovil ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Automovil {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Automovil"
+      },
+      "tipo": "Tipo",
+      "automovil": "Automovil"
+    }
+  }
+}

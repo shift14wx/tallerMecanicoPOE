@@ -1,0 +1,24 @@
+{
+  "tallerMecanicoPoeApp": {
+    "estadoAveria": {
+      "home": {
+        "title": "Estado Averias",
+        "createLabel": "Crear nuevo Estado Averia",
+        "createOrEditLabel": "Crear o editar Estado Averia",
+        "notFound": "Ningún Estado Averias encontrado"
+      },
+      "created": "Un nuevo Estado Averia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Estado Averia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Estado Averia ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Estado Averia {{ id }}?"
+      },
+      "detail": {
+        "title": "Estado Averia"
+      },
+      "estado": "Estado",
+      "descripcion": "Descripcion",
+      "averia": "Averia"
+    }
+  }
+}

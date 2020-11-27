@@ -3,15 +3,15 @@
     "marca": {
       "home": {
         "title": "Marcas",
-        "createLabel": "Crear nuevo Marca",
+        "createLabel": "Crear nueva Marca",
         "createOrEditLabel": "Crear o editar Marca",
-        "notFound": "Ningún Marcas encontrado"
+        "notFound": "Marcas no encontradas"
       },
-      "created": "Un nuevo Marca ha sido creado con el identificador {{ param }}",
-      "updated": "Un Marca ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Marca ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Marca ha sido creada con el identificador {{ param }}",
+      "updated": "Una Marca ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Marca ha sido eliminada con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Marca {{ id }}?"
+        "question": "¿Seguro que quiere eliminar la Marca {{ id }}?"
       },
       "detail": {
         "title": "Marca"

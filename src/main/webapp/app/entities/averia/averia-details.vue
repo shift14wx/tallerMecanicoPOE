@@ -17,11 +17,17 @@
                         <span>{{averia.descripcion}}</span>
                     </dd>
                     <dt>
-                        <span v-text="$t('tallerMecanicoPoeApp.averia.servicio')">Servicio</span>
+                        <span v-text="$t('tallerMecanicoPoeApp.averia.pagado')">Pagado</span>
                     </dt>
                     <dd>
-                        <div v-if="averia.servicio">
-                            <router-link :to="{name: 'ServicioView', params: {servicioId: averia.servicio.id}}">{{averia.servicio.id}}</router-link>
+                        <span>{{averia.pagado}}</span>
+                    </dd>
+                    <dt>
+                        <span v-text="$t('tallerMecanicoPoeApp.averia.automovil')">Automovil</span>
+                    </dt>
+                    <dd>
+                        <div v-if="averia.automovil">
+                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}}</router-link>
                         </div>
                     </dd>
                     <dt>
@@ -40,6 +46,10 @@
                 </button>
                 <router-link v-if="averia.id" :to="{name: 'AveriaEdit', params: {averiaId: averia.id}}" tag="button" class="btn btn-primary">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.edit')"> Edit</span>
+                </router-link>
+                <router-link :to="{name: 'Pago', params: {averiaId: averia.id}}" tag="button" class="btn btn-info details">
+                    <font-awesome-icon icon="eye"></font-awesome-icon>
+                    <span class="d-none d-md-inline" >Ver Pagos</span>
                 </router-link>
             </div>
         </div>

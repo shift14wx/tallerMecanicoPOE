@@ -27,26 +27,26 @@
                                 </b-form-datepicker>
                             </b-input-group-prepend>
                             <b-form-input id="averia-fechaAveria" type="text" class="form-control" name="fechaAveria"  :class="{'valid': !$v.averia.fechaAveria.$invalid, 'invalid': $v.averia.fechaAveria.$invalid }"
-                            v-model="$v.averia.fechaAveria.$model"  />
+                                          v-model="$v.averia.fechaAveria.$model"  />
                         </b-input-group>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.averia.descripcion')" for="averia-descripcion">Descripcion</label>
                         <input type="text" class="form-control" name="descripcion" id="averia-descripcion"
-                            :class="{'valid': !$v.averia.descripcion.$invalid, 'invalid': $v.averia.descripcion.$invalid }" v-model="$v.averia.descripcion.$model" />
+                               :class="{'valid': !$v.averia.descripcion.$invalid, 'invalid': $v.averia.descripcion.$invalid }" v-model="$v.averia.descripcion.$model" />
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.averia.servicio')" for="averia-servicio">Servicio</label>
-                        <select class="form-control" id="averia-servicio" name="servicio" v-model="averia.servicio">
+                        <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.averia.automovil')" for="averia-automovil">Automovil</label>
+                        <select class="form-control" id="averia-automovil" name="automovil" v-model="averia.automovil">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="averia.servicio && servicioOption.id === averia.servicio.id ? averia.servicio : servicioOption" v-for="servicioOption in servicios" :key="servicioOption.id">{{servicioOption.servicio}}</option>
+                            <option v-bind:value="averia.automovil && automovilOption.id === averia.automovil.id ? averia.automovil : automovilOption" v-for="automovilOption in automovils" :key="automovilOption.id">{{automovilOption.id}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.averia.estadoAveria')" for="averia-estadoAveria">Estado Averia</label>
                         <select class="form-control" id="averia-estadoAveria" name="estadoAveria" v-model="averia.estadoAveria">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="averia.estadoAveria && estadoAveriaOption.id === averia.estadoAveria.id ? averia.estadoAveria : estadoAveriaOption" v-for="estadoAveriaOption in estadoAverias" :key="estadoAveriaOption.id">{{estadoAveriaOption.estado}}</option>
+                            <option v-bind:value="averia.estadoAveria && estadoAveriaOption.id === averia.estadoAveria.id ? averia.estadoAveria : estadoAveriaOption" v-for="estadoAveriaOption in estadoAverias" :key="estadoAveriaOption.id">{{estadoAveriaOption.id}}</option>
                         </select>
                     </div>
                 </div>

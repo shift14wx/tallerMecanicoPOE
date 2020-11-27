@@ -2,14 +2,14 @@
   "tallerMecanicoPoeApp": {
     "bitacoraAveria": {
       "home": {
-        "title": "Bitacora Averias",
-        "createLabel": "Crear nuevo Bitacora Averia",
+        "title": "Bitacoras Averia",
+        "createLabel": "Crear nueva Bitacora Averia",
         "createOrEditLabel": "Crear o editar Bitacora Averia",
-        "notFound": "Ningún Bitacora Averias encontrado"
+        "notFound": "Ningúna Bitacora de Averia encontrada"
       },
-      "created": "Un nuevo Bitacora Averia ha sido creado con el identificador {{ param }}",
-      "updated": "Un Bitacora Averia ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Bitacora Averia ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nuevo Bitacora Averia ha sido creada con el identificador {{ param }}",
+      "updated": "Una Bitacora Averia ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Bitacora Averia ha sido eliminada con el identificador {{ param }}",
       "delete": {
         "question": "¿Seguro que quiere eliminar Bitacora Averia {{ id }}?"
       },
