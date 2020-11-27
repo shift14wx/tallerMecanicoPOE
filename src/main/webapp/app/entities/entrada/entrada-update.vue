@@ -34,8 +34,9 @@
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.entrada.averia')" for="entrada-averia">Averia</label>
                         <select class="form-control" id="entrada-averia" name="averia" v-model="entrada.averia">
-                            <option v-bind:value="null"></option>
-                            <option v-bind:value="entrada.averia && averiaOption.id === entrada.averia.id ? entrada.averia : averiaOption" v-for="averiaOption in averias" :key="averiaOption.id">{{averiaOption.id}}</option>
+                            <option v-if="idAveria == 0" v-bind:value="null"></option>
+                            <option v-if="idAveria == 0" v-bind:value="entrada.averia && averiaOption.id === entrada.averia.id ? entrada.averia : averiaOption" v-for="averiaOption in averias" :key="averiaOption.id">{{averiaOption.id}}</option>
+                            <option v-if="idAveria > 0" v-bind:value="entrada.averia" > {{idAveria}} </option>
                         </select>
                     </div>
                     <div class="form-group">

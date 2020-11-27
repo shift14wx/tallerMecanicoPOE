@@ -85,8 +85,12 @@ public class EntradaResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of entradas in body.
      */
     @GetMapping("/entradas")
-    public List<Entrada> getAllEntradas() {
+    public List<Entrada> getAllEntradas( @RequestParam(required = false) Long averiaId ) {
         log.debug("REST request to get all Entradas");
+        if( averiaId != null && averiaId > 0 ){
+            log.info("find by averia retorned");
+            return entradaRepository.findByAveriaId(averiaId);
+        }
         return entradaRepository.findAll();
     }
 

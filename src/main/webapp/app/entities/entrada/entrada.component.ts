@@ -23,20 +23,18 @@ export default class Entrada extends mixins(AlertMixin) {
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.averiaId) {
-        vm.retrieveAllPagos(to.params.averiaId);
         vm.setAveriaId(to.params.averiaId);
-      } else {
-        vm.retrieveAllPagos();
       }
+      vm.retrieveAllEntradas();
     });
   }
-  public setAveriaId(averiaId = null) {
+  public setAveriaId(averiaId: number = null) {
     if (averiaId) {
       this.idAveria = averiaId;
     }
   }
   public mounted(): void {
-    this.retrieveAllEntradas();
+    //this.retrieveAllEntradas();
   }
 
   public clear(): void {
@@ -44,19 +42,35 @@ export default class Entrada extends mixins(AlertMixin) {
   }
 
   public retrieveAllEntradas(): void {
+    console.log(` id averia encontrad en retriveAllEntradas: ${this.idAveria}`);
     this.isFetching = true;
-
-    this.entradaService()
-      .retrieve()
-      .then(
-        res => {
-          this.entradas = res.data;
-          this.isFetching = false;
-        },
-        err => {
-          this.isFetching = false;
-        }
-      );
+    if (this.idAveria == 0) {
+      console.log('all without averia');
+      this.entradaService()
+        .retrieve()
+        .then(
+          res => {
+            this.entradas = res.data;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    } else {
+      console.log('from averia sent');
+      this.entradaService()
+        .retriveFromAveria(this.idAveria)
+        .then(
+          res => {
+            this.entradas = res.data;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    }
   }
 
   public prepareRemove(instance: IEntrada): void {

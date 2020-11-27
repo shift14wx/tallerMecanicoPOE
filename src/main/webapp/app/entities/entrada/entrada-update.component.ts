@@ -44,14 +44,29 @@ export default class EntradaUpdate extends Vue {
   public empleados: IEmpleado[] = [];
   public isSaving = false;
   public currentLanguage = '';
+  public idEntrada: number = 0;
+  public idAveria: number = 0;
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.entradaId) {
+        vm.setIdEntrada(to.params.entradaId);
         vm.retrieveEntrada(to.params.entradaId);
+      }
+      if (to.params.averiaId) {
+        vm.setIdAveria(to.params.averiaId);
       }
       vm.initRelationships();
     });
+  }
+
+  public setIdAveria(averiaId: number = null) {
+    if (averiaId) {
+      this.idAveria = averiaId;
+    }
+  }
+  public setIdEntrada(entradaId: number = null) {
+    this.idEntrada = entradaId ? entradaId : 0;
   }
 
   created(): void {
@@ -71,7 +86,8 @@ export default class EntradaUpdate extends Vue {
         .update(this.entrada)
         .then(param => {
           this.isSaving = false;
-          this.$router.go(-1);
+          // @ts-ignore
+          this.$router.push({ name: 'Entrada', params: { averiaId: this.idAveria > 0 ? this.idAveria : null } });
           const message = this.$t('tallerMecanicoPoeApp.entrada.updated', { param: param.id });
           this.alertService().showAlert(message, 'info');
         });
@@ -80,7 +96,8 @@ export default class EntradaUpdate extends Vue {
         .create(this.entrada)
         .then(param => {
           this.isSaving = false;
-          this.$router.go(-1);
+          // @ts-ignore
+          this.$router.push({ name: 'Entrada', params: { averiaId: this.idAveria > 0 ? this.idAveria : null } });
           const message = this.$t('tallerMecanicoPoeApp.entrada.created', { param: param.id });
           this.alertService().showAlert(message, 'success');
         });
@@ -96,7 +113,8 @@ export default class EntradaUpdate extends Vue {
   }
 
   public previousState(): void {
-    this.$router.go(-1);
+    // @ts-ignore
+    this.$router.push({ name: 'Entrada', params: { averiaId: this.idAveria > 0 ? this.idAveria : null } });
   }
 
   public initRelationships(): void {
@@ -109,11 +127,18 @@ export default class EntradaUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.averias = res.data;
+        this.setAveria();
       });
     this.empleadoService()
       .retrieve()
       .then(res => {
         this.empleados = res.data;
       });
+  }
+
+  public setAveria() {
+    if (this.idEntrada == 0 && this.idAveria > 0) {
+      this.entrada.averia = this.averias.find(averia => averia.id == this.idAveria);
+    }
   }
 }

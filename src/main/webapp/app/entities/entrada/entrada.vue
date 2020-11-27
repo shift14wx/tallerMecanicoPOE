@@ -1,8 +1,9 @@
 <template>
     <div>
         <h2 id="page-heading">
-            <span v-text="$t('tallerMecanicoPoeApp.entrada.home.title')" id="entrada-heading">Entradas</span>
-            <router-link :to="{name: 'EntradaCreate'}" tag="button" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-entrada">
+            <span v-text="$t('tallerMecanicoPoeApp.entrada.home.title')" id="entrada-heading">Entrada{{ idAveria == 0 ? 's' : '' }}</span>
+            <span> {{ idAveria > 0 ? 'de la averia con id: '+idAveria : '' }} </span>
+            <router-link :to="{name: 'EntradaCreate', params:{ 'averiaId': idAveria }}" tag="button" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-entrada">
                 <font-awesome-icon icon="plus"></font-awesome-icon>
                 <span  v-text="$t('tallerMecanicoPoeApp.entrada.home.createLabel')">
                     Create a new Entrada
@@ -45,7 +46,7 @@
                     <td>{{entrada.precio}}</td>
                     <td>
                         <div v-if="entrada.servicio">
-                            <router-link :to="{name: 'ServicioView', params: {servicioId: entrada.servicio.id}}">{{entrada.servicio.id}}</router-link>
+                            <router-link :to="{name: 'ServicioView', params: {servicioId: entrada.servicio.id}}">{{entrada.servicio.servicio}}</router-link>
                         </div>
                     </td>
                     <td>
@@ -55,16 +56,16 @@
                     </td>
                     <td>
                         <div v-if="entrada.empleado">
-                            <router-link :to="{name: 'EmpleadoView', params: {empleadoId: entrada.empleado.id}}">{{entrada.empleado.id}}</router-link>
+                            <router-link :to="{name: 'EmpleadoView', params: {empleadoId: entrada.empleado.id}}">{{entrada.empleado.nombre}}</router-link>
                         </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <router-link :to="{name: 'EntradaView', params: {entradaId: entrada.id}}" tag="button" class="btn btn-info btn-sm details">
+                            <router-link :to="{name: 'EntradaView', params: {entradaId: entrada.id, averiaId: idAveria}}" tag="button" class="btn btn-info btn-sm details">
                                 <font-awesome-icon icon="eye"></font-awesome-icon>
                                 <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                             </router-link>
-                            <router-link :to="{name: 'EntradaEdit', params: {entradaId: entrada.id}}"  tag="button" class="btn btn-primary btn-sm edit">
+                            <router-link :to="{name: 'EntradaEdit', params: {entradaId: entrada.id, 'averiaId': idAveria}}"  tag="button" class="btn btn-primary btn-sm edit">
                                 <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                                 <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
                             </router-link>

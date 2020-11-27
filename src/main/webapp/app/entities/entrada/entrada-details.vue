@@ -27,7 +27,7 @@
                     </dt>
                     <dd>
                         <div v-if="entrada.servicio">
-                            <router-link :to="{name: 'ServicioView', params: {servicioId: entrada.servicio.id}}">{{entrada.servicio.id}}</router-link>
+                            <router-link :to="{name: 'ServicioView', params: {servicioId: entrada.servicio.id}}">{{entrada.servicio.servicio}}</router-link>
                         </div>
                     </dd>
                     <dt>
@@ -43,7 +43,7 @@
                     </dt>
                     <dd>
                         <div v-if="entrada.empleado">
-                            <router-link :to="{name: 'EmpleadoView', params: {empleadoId: entrada.empleado.id}}">{{entrada.empleado.id}}</router-link>
+                            <router-link :to="{name: 'EmpleadoView', params: {empleadoId: entrada.empleado.id}}">{{entrada.empleado.nombre}}</router-link>
                         </div>
                     </dd>
                 </dl>
@@ -52,7 +52,7 @@
                         class="btn btn-info">
                     <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>
                 </button>
-                <router-link v-if="entrada.id" :to="{name: 'EntradaEdit', params: {entradaId: entrada.id}}" tag="button" class="btn btn-primary">
+                <router-link v-if="entrada.id" :to="{name: 'EntradaEdit', params: {entradaId: entrada.id, averiaId: idAveria}}" tag="button" class="btn btn-primary">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.edit')"> Edit</span>
                 </router-link>
             </div>
