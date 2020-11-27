@@ -39,14 +39,14 @@
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.averia.automovil')" for="averia-automovil">Automovil</label>
                         <select class="form-control" id="averia-automovil" name="automovil" v-model="averia.automovil">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="averia.automovil && automovilOption.id === averia.automovil.id ? averia.automovil : automovilOption" v-for="automovilOption in automovils" :key="automovilOption.id">{{automovilOption.id}}</option>
+                            <option v-bind:value="averia.automovil && automovilOption.id === averia.automovil.id ? averia.automovil : automovilOption" v-for="automovilOption in automovils" :key="automovilOption.id">{{automovilOption.id}} -) {{ automovilOption.marca ? automovilOption.marca.marca : '' }} {{ automovilOption.modelo }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.averia.estadoAveria')" for="averia-estadoAveria">Estado Averia</label>
                         <select class="form-control" id="averia-estadoAveria" name="estadoAveria" v-model="averia.estadoAveria">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="averia.estadoAveria && estadoAveriaOption.id === averia.estadoAveria.id ? averia.estadoAveria : estadoAveriaOption" v-for="estadoAveriaOption in estadoAverias" :key="estadoAveriaOption.id">{{estadoAveriaOption.id}}</option>
+                            <option v-bind:value="averia.estadoAveria && estadoAveriaOption.id === averia.estadoAveria.id ? averia.estadoAveria : estadoAveriaOption" v-for="estadoAveriaOption in estadoAverias" :key="estadoAveriaOption.id">{{estadoAveriaOption.estado}}</option>
                         </select>
                     </div>
                 </div>
