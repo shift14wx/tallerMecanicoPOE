@@ -3,6 +3,11 @@
         <h2 id="page-heading">
             <span v-text="$t('tallerMecanicoPoeApp.averia.home.title')" id="averia-heading">Averias</span>
             <span v-if="IdAutomovil"> del automovil con id: {{ IdAutomovil }} </span>
+            <button class="btn btn-primary float-right jh-create-entity create-averia" v-on:click="showFormSearch">
+                <font-awesome-icon icon="eye"></font-awesome-icon>
+                Buscar averia
+            </button>
+            &nbsp;
             <router-link :to="{name: 'AveriaCreate', params:{ automovilId: IdAutomovil }}" tag="button" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-averia">
                 <font-awesome-icon icon="plus"></font-awesome-icon>
                 <span  v-text="$t('tallerMecanicoPoeApp.averia.home.createLabel')">
@@ -46,7 +51,7 @@
                     <td>{{averia.descripcion}}</td>
                     <td>
                         <div v-if="averia.automovil">
-                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}} -) {{ averia.automovil.marca }} {{ averia.automovil.modelo }}</router-link>
+                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}} -) {{ averia.automovil.marca ? averia.automovil.marca.marca: '' }} {{ averia.automovil.modelo }}</router-link>
                         </div>
                     </td>
                     <td>
@@ -58,13 +63,13 @@
                         <div :class="{'alert alert-warning':!averia.pagado,'alert alert-success': averia.pagado}">{{ !averia.pagado ? 'Pendiente' : 'Solventada'}}</div>
                     </td>
                     <td>
-                        <router-link :to="{name: 'Pago', params: {averiaId: averia.id}}" tag="button" class="btn btn-primary btn-sm">
+                        <router-link :to="{name: 'PagosAveria', params: {averiaId: averia.id}}" tag="button" class="btn btn-primary btn-sm">
                             <font-awesome-icon icon="eye"></font-awesome-icon>
                             <span class="d-none d-md-inline" >Ver Pagos</span>
                         </router-link>
                     </td>
                     <td>
-                        <router-link :to="{name: 'Entrada', params: {averiaId: averia.id}}" tag="button" class="btn btn-primary btn-sm">
+                        <router-link :to="{name: 'EntradasAveria', params: {averiaId: averia.id}}" tag="button" class="btn btn-primary btn-sm">
                             <font-awesome-icon icon="eye"></font-awesome-icon>
                             <span class="d-none d-md-inline" >Ver Detalles</span>
                         </router-link>

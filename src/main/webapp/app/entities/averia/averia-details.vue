@@ -71,12 +71,17 @@
                         class="btn btn-info">
                     <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>
                 </button>
-                <router-link v-if="averia.id" :to="{name: 'AveriaEdit', params: {averiaId: averia.id, automovilId: IdAutomovil}}" tag="button" class="btn btn-primary">
+                <router-link v-if="averia.id" :to="{name: 'AveriaEdit', params: {averiaId: averia.id, AveriaEditVehicule: IdAutomovil}}" tag="button" class="btn btn-primary">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.edit')"> Edit</span>
                 </router-link>
                 <router-link :to="{name: 'Pago', params: {averiaId: averia.id}}" tag="button" class="btn btn-info details">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline" >Ver Pagos</span>
+                </router-link>
+
+                <router-link :to="{name: 'EntradasAveria', params: {averiaId: averia.id}}" tag="button" class="btn btn-info details">
+                    <font-awesome-icon icon="eye"></font-awesome-icon>
+                    <span class="d-none d-md-inline" >Ver Entradas</span>
                 </router-link>
             </div>
         </div>

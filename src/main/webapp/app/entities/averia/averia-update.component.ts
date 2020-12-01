@@ -93,7 +93,7 @@ export default class AveriaUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           // @ts-ignore
-          this.$router.push({ name: 'Averia', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
+          this.$router.push({ name: 'AveriaVehicule', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
           const message = this.$t('tallerMecanicoPoeApp.averia.updated', { param: param.id });
           this.alertService().showAlert(message, 'info');
         });
@@ -103,7 +103,7 @@ export default class AveriaUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           // @ts-ignore
-          this.$router.push({ name: 'Averia', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
+          this.$router.push({ name: 'AveriaVehicule', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
           const message = this.$t('tallerMecanicoPoeApp.averia.created', { param: param.id });
           this.alertService().showAlert(message, 'success');
         });
@@ -120,7 +120,7 @@ export default class AveriaUpdate extends Vue {
 
   public previousState(): void {
     // @ts-ignore
-    this.$router.push({ name: 'Averia', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
+    this.$router.push({ name: 'AveriaVehicule', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
   }
 
   public initRelationships(): void {

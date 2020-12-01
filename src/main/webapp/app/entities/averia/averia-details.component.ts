@@ -64,6 +64,6 @@ export default class AveriaDetails extends Vue {
 
   public previousState() {
     // @ts-ignore
-    this.$router.push({ name: 'Averia', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
+    this.$router.push({ name: 'EntradasAveria', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
   }
 }

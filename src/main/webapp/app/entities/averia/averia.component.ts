@@ -101,6 +101,44 @@ export default class Averia extends mixins(AlertMixin) {
       });
   }
 
+  public showFormSearch() {
+    this.$swal({
+      title: 'Buscar averia por Id',
+      input: 'number',
+      inputAttributes: {
+        autocapitalize: 'off',
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Buscar',
+      showLoaderOnConfirm: true,
+      preConfirm: id => {
+        return this.averiaService()
+          .find(id)
+          .then(response => {
+            if (!response) {
+              // @ts-ignore
+              throw new Error(response);
+            }
+            return response;
+          })
+          .catch(error => {
+            this.$swal.showValidationMessage(`Request failed: ${error}`);
+          });
+      },
+      allowOutsideClick: () => this.$swal.isLoading(),
+    }).then(result => {
+      if (result.isConfirmed) {
+        // @ts-ignore
+        this.$swal({
+          title: `Se ha encontrado la averia con el id: ${result.value.id}`,
+          imageUrl: '',
+        }).then(res => {
+          this.$router.push({ name: 'AveriaView', params: { averiaId: result.value.id } });
+        });
+      }
+    });
+  }
+
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
   }

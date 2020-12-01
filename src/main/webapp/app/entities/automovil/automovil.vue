@@ -83,7 +83,7 @@
                         </div>
                     </td>
                     <td>
-                    <router-link :to="{name: 'Averia', params: {automovilId: automovil.id}}" tag="button" class="btn btn-info btn-sm">
+                    <router-link :to="{name: 'AveriaVehicule', params: {automovilId: automovil.id}}" tag="button" class="btn btn-info btn-sm">
                         <font-awesome-icon icon="eye"></font-awesome-icon>
                         <span class="d-none d-md-inline" v-text="$t('entity.action.view')">Averias</span>
                     </router-link>
