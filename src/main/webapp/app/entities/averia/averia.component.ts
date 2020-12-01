@@ -18,9 +18,23 @@ export default class Averia extends mixins(AlertMixin) {
 
   public isFetching = false;
 
-  public mounted(): void {
-    this.retrieveAllAverias();
+  public IdAutomovil: number = 0;
+
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (to.params.automovilId) {
+        vm.setVehiculoId(to.params.automovilId);
+      }
+
+      vm.retrieveAllAverias();
+    });
   }
+
+  public setVehiculoId(automovilId) {
+    this.IdAutomovil = automovilId ? automovilId : 0;
+  }
+
+  public mounted(): void {}
 
   public clear(): void {
     this.retrieveAllAverias();
@@ -28,18 +42,33 @@ export default class Averia extends mixins(AlertMixin) {
 
   public retrieveAllAverias(): void {
     this.isFetching = true;
-
-    this.averiaService()
-      .retrieve()
-      .then(
-        res => {
-          this.averias = res.data;
-          this.isFetching = false;
-        },
-        err => {
-          this.isFetching = false;
-        }
-      );
+    console.log('id automovil: ' + this.IdAutomovil);
+    if (this.IdAutomovil == 0) {
+      console.log('done retriving all averias without vehicule id');
+      this.averiaService()
+        .retrieve()
+        .then(
+          res => {
+            this.averias = res.data;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    } else {
+      this.averiaService()
+        .findAutomovilAverias(this.IdAutomovil)
+        .then(
+          res => {
+            this.averias = res.data;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    }
   }
 
   public prepareRemove(instance: IAveria): void {
@@ -59,6 +88,16 @@ export default class Averia extends mixins(AlertMixin) {
         this.removeId = null;
         this.retrieveAllAverias();
         this.closeDialog();
+      })
+      .catch(err => {
+        if (err) {
+          const message = this.$t('tallerMecanicoPoeApp.averia.deletedfalied', { param: this.removeId });
+          this.alertService().showAlert(message, 'danger');
+          this.getAlertFromStore();
+          this.removeId = null;
+          this.retrieveAllAverias();
+          this.closeDialog();
+        }
       });
   }
 

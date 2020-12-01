@@ -38,8 +38,9 @@
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.averia.automovil')" for="averia-automovil">Automovil</label>
                         <select class="form-control" id="averia-automovil" name="automovil" v-model="averia.automovil">
-                            <option v-bind:value="null"></option>
-                            <option v-bind:value="averia.automovil && automovilOption.id === averia.automovil.id ? averia.automovil : automovilOption" v-for="automovilOption in automovils" :key="automovilOption.id">{{automovilOption.id}} -) {{ automovilOption.marca ? automovilOption.marca.marca : '' }} {{ automovilOption.modelo }}</option>
+                            <option v-if="IdAutomovil == 0" v-bind:value="null"></option>
+                            <option v-if="IdAutomovil == 0" v-bind:value="averia.automovil && automovilOption.id === averia.automovil.id ? averia.automovil : automovilOption" v-for="automovilOption in automovils" :key="automovilOption.id">{{automovilOption.id}} -) {{ automovilOption.marca ? automovilOption.marca.marca : '' }} {{ automovilOption.modelo }}</option>
+                            <option v-bind:value="averia.automovil && automovilOption.id === averia.automovil.id ? averia.automovil : automovilOption" v-for="automovilOption in automovils" :key="automovilOption.id" v-if="IdAutomovil > 0 && automovilOption.id == IdAutomovil" >{{automovilOption.id}} -) {{ automovilOption.marca ? automovilOption.marca.marca : '' }} {{ automovilOption.modelo }}</option>
                         </select>
                     </div>
                     <div class="form-group">

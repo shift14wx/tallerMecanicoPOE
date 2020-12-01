@@ -85,8 +85,13 @@ public class AveriaResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of averias in body.
      */
     @GetMapping("/averias")
-    public List<Averia> getAllAverias() {
+    public List<Averia> getAllAverias( @RequestParam(required = false) Long IdAutomovil ) {
         log.debug("REST request to get all Averias");
+        log.info("retornando averias");
+        if( IdAutomovil != null && IdAutomovil > 0 ){
+            log.info("returning all averias of automovil with id: "+IdAutomovil.toString());
+            return averiaRepository.findByAutomovilId(IdAutomovil);
+        }
         return averiaRepository.findAll();
     }
 

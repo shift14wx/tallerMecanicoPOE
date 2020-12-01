@@ -5,12 +5,27 @@ import { IAveria } from '@/shared/model/averia.model';
 const baseApiUrl = 'api/averias';
 
 export default class AveriaService {
+  public IdAutomovil: number = 0;
+
   public find(id: number): Promise<IAveria> {
     return new Promise<IAveria>((resolve, reject) => {
       axios
         .get(`${baseApiUrl}/${id}`)
         .then(res => {
           resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public findAutomovilAverias(id: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(baseApiUrl + `?IdAutomovil=${id}`)
+        .then(res => {
+          resolve(res);
         })
         .catch(err => {
           reject(err);

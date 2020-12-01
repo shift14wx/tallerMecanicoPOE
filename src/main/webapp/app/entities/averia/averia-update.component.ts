@@ -1,7 +1,5 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
-
 import BitacoraAveriaService from '../bitacora-averia/bitacora-averia.service';
 import { IBitacoraAveria } from '@/shared/model/bitacora-averia.model';
 
@@ -59,10 +57,19 @@ export default class AveriaUpdate extends Vue {
   public isSaving = false;
   public currentLanguage = '';
 
+  public IdAutomovil: number = 0;
+
+  public setVehiculoId(automovilId) {
+    this.IdAutomovil = automovilId ? automovilId : 0;
+  }
+
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.averiaId) {
         vm.retrieveAveria(to.params.averiaId);
+      }
+      if (to.params.automovilId) {
+        vm.setVehiculoId(to.params.automovilId);
       }
       vm.initRelationships();
     });
@@ -85,7 +92,8 @@ export default class AveriaUpdate extends Vue {
         .update(this.averia)
         .then(param => {
           this.isSaving = false;
-          this.$router.go(-1);
+          // @ts-ignore
+          this.$router.push({ name: 'Averia', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
           const message = this.$t('tallerMecanicoPoeApp.averia.updated', { param: param.id });
           this.alertService().showAlert(message, 'info');
         });
@@ -94,7 +102,8 @@ export default class AveriaUpdate extends Vue {
         .create(this.averia)
         .then(param => {
           this.isSaving = false;
-          this.$router.go(-1);
+          // @ts-ignore
+          this.$router.push({ name: 'Averia', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
           const message = this.$t('tallerMecanicoPoeApp.averia.created', { param: param.id });
           this.alertService().showAlert(message, 'success');
         });
@@ -110,7 +119,8 @@ export default class AveriaUpdate extends Vue {
   }
 
   public previousState(): void {
-    this.$router.go(-1);
+    // @ts-ignore
+    this.$router.push({ name: 'Averia', params: { automovilId: this.IdAutomovil > 0 ? this.IdAutomovil : null } });
   }
 
   public initRelationships(): void {
@@ -133,6 +143,9 @@ export default class AveriaUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.automovils = res.data;
+        if (this.IdAutomovil > 0) {
+          this.averia.automovil = this.automovils.find(au => au.id == this.IdAutomovil);
+        }
       });
     this.estadoAveriaService()
       .retrieve()

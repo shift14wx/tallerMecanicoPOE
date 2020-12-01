@@ -2,7 +2,8 @@
     <div>
         <h2 id="page-heading">
             <span v-text="$t('tallerMecanicoPoeApp.averia.home.title')" id="averia-heading">Averias</span>
-            <router-link :to="{name: 'AveriaCreate'}" tag="button" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-averia">
+            <span v-if="IdAutomovil"> del automovil con id: {{ IdAutomovil }} </span>
+            <router-link :to="{name: 'AveriaCreate', params:{ automovilId: IdAutomovil }}" tag="button" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-averia">
                 <font-awesome-icon icon="plus"></font-awesome-icon>
                 <span  v-text="$t('tallerMecanicoPoeApp.averia.home.createLabel')">
                     Create a new Averia
@@ -70,11 +71,11 @@
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <router-link :to="{name: 'AveriaView', params: {averiaId: averia.id}}" tag="button" class="btn btn-info btn-sm details">
+                            <router-link :to="{name: 'AveriaView', params: {averiaId: averia.id,automovilId: IdAutomovil}}" tag="button" class="btn btn-info btn-sm details">
                                 <font-awesome-icon icon="eye"></font-awesome-icon>
                                 <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                             </router-link>
-                            <router-link :to="{name: 'AveriaEdit', params: {averiaId: averia.id}}"  tag="button" class="btn btn-primary btn-sm edit">
+                            <router-link :to="{name: 'AveriaEdit', params: {averiaId: averia.id,automovilId: IdAutomovil}}"  tag="button" class="btn btn-primary btn-sm edit">
                                 <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                                 <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
                             </router-link>

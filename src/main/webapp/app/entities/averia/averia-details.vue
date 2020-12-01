@@ -23,11 +23,17 @@
                         <span>{{averia.pagado}}</span>
                     </dd>
                     <dt>
+                        <span v-text="$t('tallerMecanicoPoeApp.averia.cliente')">Cliente</span>
+                    </dt>
+                    <dd>
+                        <span>{{averia.automovil}}</span>
+                    </dd>
+                    <dt>
                         <span v-text="$t('tallerMecanicoPoeApp.averia.automovil')">Automovil</span>
                     </dt>
                     <dd>
                         <div v-if="averia.automovil">
-                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}}</router-link>
+                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}} -) {{ averia.automovil.marca }} {{ averia.automovil.modelo }}</router-link>
                         </div>
                     </dd>
                     <dt>
@@ -35,7 +41,7 @@
                     </dt>
                     <dd>
                         <div v-if="averia.estadoAveria">
-                            <router-link :to="{name: 'EstadoAveriaView', params: {estadoAveriaId: averia.estadoAveria.id}}">{{averia.estadoAveria.id}}</router-link>
+                            <router-link :to="{name: 'EstadoAveriaView', params: {estadoAveriaId: averia.estadoAveria.id}}">{{averia.estadoAveria.estado}}</router-link>
                         </div>
                     </dd>
                 </dl>
@@ -44,7 +50,7 @@
                         class="btn btn-info">
                     <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>
                 </button>
-                <router-link v-if="averia.id" :to="{name: 'AveriaEdit', params: {averiaId: averia.id}}" tag="button" class="btn btn-primary">
+                <router-link v-if="averia.id" :to="{name: 'AveriaEdit', params: {averiaId: averia.id, automovilId: IdAutomovil}}" tag="button" class="btn btn-primary">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.edit')"> Edit</span>
                 </router-link>
                 <router-link :to="{name: 'Pago', params: {averiaId: averia.id}}" tag="button" class="btn btn-info details">

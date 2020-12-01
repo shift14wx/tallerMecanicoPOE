@@ -38,6 +38,7 @@
                     <th><span v-text="$t('tallerMecanicoPoeApp.automovil.cliente')">Cliente</span></th>
                     <th><span v-text="$t('tallerMecanicoPoeApp.automovil.marca')">Marca</span></th>
                     <th><span v-text="$t('tallerMecanicoPoeApp.automovil.tipoAutomovil')">Tipo Automovil</span></th>
+                    <th><span v-text="$t('tallerMecanicoPoeApp.automovil.averias')" >Averias</span></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -80,6 +81,12 @@
                         <div v-if="automovil.tipoAutomovil">
                             <router-link :to="{name: 'TipoAutomovilView', params: {tipoAutomovilId: automovil.tipoAutomovil.id}}">{{automovil.tipoAutomovil.id}}-){{automovil.tipoAutomovil.tipo}}</router-link>
                         </div>
+                    </td>
+                    <td>
+                    <router-link :to="{name: 'Averia', params: {automovilId: automovil.id}}" tag="button" class="btn btn-info btn-sm">
+                        <font-awesome-icon icon="eye"></font-awesome-icon>
+                        <span class="d-none d-md-inline" v-text="$t('entity.action.view')">Averias</span>
+                    </router-link>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

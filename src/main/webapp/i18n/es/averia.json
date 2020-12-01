@@ -10,6 +10,7 @@
       "created": "Una nueva Averia ha sido creada con el identificador {{ param }}",
       "updated": "Una Averia ha sido actualizada con el identificador {{ param }}",
       "deleted": "Una Averia ha sido eliminada con el identificador {{ param }}",
+      "deletedfalied": "No se pudo eliminar la averia con identificador {{ param }} debido a que tiene pagos/entradas relacionad@s a ella",
       "delete": {
         "question": "¿Seguro que quiere eliminar Averia {{ id }}?"
       },
@@ -23,6 +24,8 @@
       "servicio": "Servicio",
       "estadoAveria": "Estado Averia",
       "IrPagos": "Ver Pagos",
+      "pagado": "Pagado",
+      "cliente": "Cliente",
       "RealEstado": "Estado de Pagos",
       "estado": "Estado Averia",
       "automovil": "Automovil",

@@ -28,7 +28,8 @@
       "clasificacionAutomovil": "Clasificacion Automovil",
       "cliente": "Cliente",
       "marca": "Marca",
-      "tipoAutomovil": "Tipo Automovil"
+      "tipoAutomovil": "Tipo Automovil",
+      "averias": "Averias"
     }
   }
 }
