@@ -128,11 +128,12 @@ export default class Averia extends mixins(AlertMixin) {
       allowOutsideClick: () => this.$swal.isLoading(),
     }).then(result => {
       if (result.isConfirmed) {
-        // @ts-ignore
         this.$swal({
+          // @ts-ignore
           title: `Se ha encontrado la averia con el id: ${result.value.id}`,
           imageUrl: '',
         }).then(res => {
+          // @ts-ignore
           this.$router.push({ name: 'AveriaView', params: { averiaId: result.value.id } });
         });
       }

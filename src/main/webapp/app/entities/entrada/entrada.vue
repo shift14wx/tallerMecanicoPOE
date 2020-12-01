@@ -2,7 +2,10 @@
     <div>
         <h2 id="page-heading">
             <span v-text="$t('tallerMecanicoPoeApp.entrada.home.title')" id="entrada-heading">Entrada{{ idAveria == 0 ? 's' : '' }}</span>
-            <span> {{ idAveria > 0 ? 'de la averia con id: '+idAveria : '' }} </span>
+            <span> {{ idAveria > 0 ? 'de la averia con id: ' : '' }} </span>
+            <router-link v-if="idAveria > 0"  :to="{name: 'AveriaView', params:{ 'averiaId': idAveria }}">
+               <span>{{idAveria}}</span>
+            </router-link>
             <router-link :to="{name: 'EntradaCreate', params:{ 'averiaId': idAveria }}" tag="button" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-entrada">
                 <font-awesome-icon icon="plus"></font-awesome-icon>
                 <span  v-text="$t('tallerMecanicoPoeApp.entrada.home.createLabel')">

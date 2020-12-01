@@ -36,7 +36,7 @@
                     </dt>
                     <dd>
                         <div v-if="averia.automovil">
-                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}} -) {{ averia.automovil.marca }} {{ averia.automovil.modelo }}</router-link>
+                            <router-link :to="{name: 'AutomovilView', params: {automovilId: averia.automovil.id}}">{{averia.automovil.id}} -) {{ averia.automovil.marca ? averia.automovil.marca.marca : ''}} {{ averia.automovil.modelo }}</router-link>
                         </div>
                     </dd>
                     <dt>

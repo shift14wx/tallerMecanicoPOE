@@ -33,9 +33,9 @@ export default class EntradaDetails extends Vue {
   }
 
   public previousState() {
-    // @ts-ignore
     this.$router.push({
       name: this.idAveria > 0 ? 'EntradasAveria' : 'Entrada',
+      // @ts-ignore
       params: { averiaId: this.idAveria > 0 ? this.idAveria : null },
     });
   }

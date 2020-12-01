@@ -95,9 +95,9 @@ export default class PagoUpdate extends Vue {
           this.isSaving = false;
           this.$swal({
             icon: 'error',
-            title: err.response.data.title,
-            showConfirmButton: false,
-            timer: 1500,
+            title: 'Error',
+            text: err.response.data.title,
+            showConfirmButton: true,
           });
         });
     }

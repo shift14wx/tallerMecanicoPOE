@@ -58,7 +58,7 @@ public class PagoResource {
             throw new BadRequestAlertException("A new pago cannot already have an ID", ENTITY_NAME, "idexists");
         }
         PagosCalculos calculos = this.averiaResource.getAveriaPagosCalculos(pago.getAveria().getId());
-        if( calculos.faltanteApagar > 0.0 && pago.getTotal() <= calculos.faltanteApagar ){
+        if( calculos.faltanteApagar > 0.0 && get2decimals(pago.getTotal()) <= get2decimals(calculos.faltanteApagar) ){
             Pago result = pagoRepository.save(pago);
             calculos = this.averiaResource.getAveriaPagosCalculos(pago.getAveria().getId());
 
@@ -74,9 +74,15 @@ public class PagoResource {
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
                 .body(result);
         }else{
-            throw new BadRequestAlertException("El pago no se pudo realizar debido a que el total de pago es mayor al faltante a pagar, maximo a poder pagar es de $"+calculos.faltanteApagar,ENTITY_NAME,"paymentoutofrange");
+            log.info(String.format( "faltante pagar es mayor a cero: %b, el total del pago es menor o igual al faltante: %b",calculos.faltanteApagar > 0, pago.getTotal() <= calculos.faltanteApagar));
+            log.info(String.format("total a pagar %f , faltante: %f, total a pagar: %f",calculos.totalApagar,calculos.faltanteApagar,pago.getTotal()));
+            throw new BadRequestAlertException("El pago no se pudo realizar debido a que el total de pago es mayor al faltante a pagar, maximo a poder pagar es de $"+String.format("%.2f", calculos.faltanteApagar),ENTITY_NAME,"paymentoutofrange");
         }
 
+    }
+
+    public Double get2decimals(Double value){
+        return Math.floor(value * 100) / 100;
     }
 
     /**

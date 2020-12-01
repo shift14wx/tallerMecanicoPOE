@@ -125,16 +125,18 @@ public class AveriaResource {
        try {
            List<Entrada>  entradas= entradaRepository.findByAveriaId(id);
            PagosCalculos pagos = new PagosCalculos();
+
            Double totalapagar = entradas.stream()
                .mapToDouble(en -> ( en.getPrecio() ) )
                .reduce( 0.0,( a, b) -> a+b );
+           totalapagar = Math.floor( totalapagar * 100 ) /100;
            List<Pago> ListPagos = pagoRepository.findByAveriaId(id);
 
            Double pagado = ListPagos.stream()
                .mapToDouble( pa -> ( pa.getTotal() ) )
                .reduce(0.0, (a,b) -> a+b );
-
-           pagos.setFaltanteApagar( totalapagar - pagado );
+           pagado = Math.floor( pagado * 100) / 100;
+           pagos.setFaltanteApagar( Math.ceil( (totalapagar - pagado) *100 ) /100 );
            pagos.setTotalApagar( totalapagar );
            return pagos;
        }catch (Exception e){
