@@ -420,7 +420,7 @@ export default [
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/pago/automovil/:averiaId',
+    path: '/pago',
     name: 'Pago',
     component: Pago,
     meta: { authorities: [Authority.USER] },
