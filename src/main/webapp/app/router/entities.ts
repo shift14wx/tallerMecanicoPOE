@@ -96,6 +96,12 @@ export default [
     meta: { authorities: [Authority.USER] },
   },
   {
+    path: '/automovil/cliente/:clienteId',
+    name: 'ClienteAutomoviles',
+    component: Automovil,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
     path: '/automovil/new',
     name: 'AutomovilCreate',
     component: AutomovilUpdate,

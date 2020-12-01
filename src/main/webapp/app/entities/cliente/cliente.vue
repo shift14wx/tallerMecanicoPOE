@@ -29,6 +29,7 @@
                     <th><span v-text="$t('tallerMecanicoPoeApp.cliente.telefono')">Telefono</span></th>
                     <th><span v-text="$t('tallerMecanicoPoeApp.cliente.email')">Email</span></th>
                     <th><span v-text="$t('tallerMecanicoPoeApp.cliente.dui')">Dui</span></th>
+                    <th><span v-text="$t('tallerMecanicoPoeApp.cliente.automoviles')">Automoviles</span></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -42,6 +43,12 @@
                     <td>{{cliente.telefono}}</td>
                     <td>{{cliente.email}}</td>
                     <td>{{cliente.dui}}</td>
+                    <td>
+                        <router-link :to="{name: 'ClienteAutomoviles', params: {clienteId: cliente.id}}" tag="button" class="btn btn-info btn-sm details">
+                            <font-awesome-icon icon="eye"></font-awesome-icon>
+                            <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
+                        </router-link>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <router-link :to="{name: 'ClienteView', params: {clienteId: cliente.id}}" tag="button" class="btn btn-info btn-sm details">

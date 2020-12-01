@@ -30,7 +30,19 @@ export default class AutomovilService {
         });
     });
   }
-
+  public retrieveVehiculeCliente(idCliente: number): Promise<any> {
+    console.log('retrieveVehiculeCliente, tomando los del cliente ' + idCliente);
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}?clienteId=${idCliente}`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
   public delete(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

@@ -86,8 +86,12 @@ public class AutomovilResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of automovils in body.
      */
     @GetMapping("/automovils")
-    public List<Automovil> getAllAutomovils() {
+    public List<Automovil> getAutomovilesFromClienteId( @RequestParam(required = false) Long clienteId ) {
         log.debug("REST request to get all Automovils");
+        if( clienteId != null && clienteId > 0 ){
+            log.info(String.format("retornando vehiculos de cliente con id %d",clienteId));
+            return automovilRepository.findByClienteId( clienteId );
+        }
         return automovilRepository.findAll();
     }
 

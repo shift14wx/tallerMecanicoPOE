@@ -66,8 +66,9 @@
                     <div class="form-group">
                         <label class="form-control-label" v-text="$t('tallerMecanicoPoeApp.automovil.cliente')" for="automovil-cliente">Cliente</label>
                         <select class="form-control" id="automovil-cliente" name="cliente" v-model="automovil.cliente">
-                            <option v-bind:value="null"></option>
-                            <option v-bind:value="automovil.cliente && clienteOption.id === automovil.cliente.id ? automovil.cliente : clienteOption" v-for="clienteOption in clientes" :key="clienteOption.id">{{clienteOption.nombre}}</option>
+                            <option v-if="idCliente == 0" v-bind:value="null"></option>
+                            <option v-if="idCliente == 0" v-bind:value="automovil.cliente && clienteOption.id === automovil.cliente.id ? automovil.cliente : clienteOption" v-for="clienteOption in clientes" :key="clienteOption.id">{{clienteOption.nombre}}</option>
+                            <option v-for="clienteOption in clientes" v-if="idCliente > 0 && clienteOption.id == idCliente" v-bind:value="clienteOption" :key="clienteOption.id">{{clienteOption.nombre}}</option>
                         </select>
                     </div>
                     <div class="form-group">

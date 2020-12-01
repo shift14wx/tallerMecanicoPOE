@@ -14,32 +14,56 @@ export default class Automovil extends mixins(AlertMixin) {
   @Inject('automovilService') private automovilService: () => AutomovilService;
   private removeId: number = null;
 
+  private idCliente: number = 0;
+
   public automovils: IAutomovil[] = [];
 
   public isFetching = false;
 
-  public mounted(): void {
-    this.retrieveAllAutomovils();
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (to.params.clienteId) {
+        vm.retrieveAllAutomovils(to.params.clienteId);
+      } else {
+        vm.retrieveAllAutomovils();
+      }
+    });
   }
 
   public clear(): void {
     this.retrieveAllAutomovils();
   }
-
-  public retrieveAllAutomovils(): void {
+  public retrieveAllAutomovils(clienteId: number = 0): void {
+    this.idCliente = clienteId ? clienteId : 0;
     this.isFetching = true;
 
-    this.automovilService()
-      .retrieve()
-      .then(
-        res => {
-          this.automovils = res.data;
-          this.isFetching = false;
-        },
-        err => {
-          this.isFetching = false;
-        }
-      );
+    if (this.idCliente > 0) {
+      console.log('get vehicles of client id: ' + this.idCliente);
+      this.automovilService()
+        .retrieveVehiculeCliente(this.idCliente)
+        .then(
+          res => {
+            this.automovils = res.data;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    } else {
+      console.log('get all vehicles');
+      this.automovilService()
+        .retrieve()
+        .then(
+          res => {
+            this.automovils = res.data;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    }
   }
 
   public prepareRemove(instance: IAutomovil): void {

@@ -63,14 +63,23 @@ export default class AutomovilUpdate extends Vue {
   public tipoAutomovils: ITipoAutomovil[] = [];
   public isSaving = false;
   public currentLanguage = '';
-
+  private idCliente: number = 0;
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.automovilId) {
         vm.retrieveAutomovil(to.params.automovilId);
       }
+      if (to.params.clienteId) {
+        vm.setIdCliente(to.params.clienteId);
+      }
       vm.initRelationships();
     });
+  }
+
+  setIdCliente(clienteId: number = 0) {
+    if (clienteId && clienteId > 0) {
+      this.idCliente = clienteId;
+    }
   }
 
   created(): void {
@@ -133,6 +142,9 @@ export default class AutomovilUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.clientes = res.data;
+        if (this.idCliente > 0) {
+          this.automovil.cliente = this.clientes.find(client => client.id == this.idCliente);
+        }
       });
     this.marcaService()
       .retrieve()

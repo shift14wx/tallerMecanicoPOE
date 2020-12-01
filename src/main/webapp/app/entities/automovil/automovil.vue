@@ -2,7 +2,7 @@
     <div>
         <h2 id="page-heading">
             <span v-text="$t('tallerMecanicoPoeApp.automovil.home.title')" id="automovil-heading">Automovils</span>
-            <router-link :to="{name: 'AutomovilCreate'}" tag="button" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-automovil">
+            <router-link :to="{name: 'AutomovilCreate', params:{ clienteId: idCliente }}" tag="button" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-automovil">
                 <font-awesome-icon icon="plus"></font-awesome-icon>
                 <span  v-text="$t('tallerMecanicoPoeApp.automovil.home.createLabel')">
                     Create a new Automovil
