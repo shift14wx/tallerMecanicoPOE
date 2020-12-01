@@ -86,6 +86,7 @@ public class ClienteResource {
      */
     @GetMapping("/clientes")
     public List<Cliente> getAllClientes() {
+
         log.debug("REST request to get all Clientes");
         return clienteRepository.findAll();
     }

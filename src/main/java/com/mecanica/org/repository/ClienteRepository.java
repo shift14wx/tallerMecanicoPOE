@@ -5,6 +5,8 @@ import com.mecanica.org.domain.Cliente;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Spring Data  repository for the Cliente entity.
  */

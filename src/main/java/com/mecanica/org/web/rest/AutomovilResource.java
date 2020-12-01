@@ -1,6 +1,7 @@
 package com.mecanica.org.web.rest;
 
 import com.mecanica.org.domain.Automovil;
+import com.mecanica.org.domain.Cliente;
 import com.mecanica.org.repository.AutomovilRepository;
 import com.mecanica.org.web.rest.errors.BadRequestAlertException;
 
@@ -88,6 +89,20 @@ public class AutomovilResource {
     public List<Automovil> getAllAutomovils() {
         log.debug("REST request to get all Automovils");
         return automovilRepository.findAll();
+    }
+
+    @GetMapping("/automovils/clienteof/{automovilId}")
+    public Cliente getClientAutomovil(@PathVariable(required = true) Long automovilId ) {
+        log.debug("REST request to get all Automovils");
+        log.info("automovilId: "+automovilId.toString());
+        if( automovilId != null && automovilId > 0 ){
+            log.info("enviar el cliente");
+            Optional<Automovil> Opautomovil = automovilRepository.findById( automovilId );
+            log.info("automovil encontrado: "+Opautomovil.get().getModelo());
+            Cliente cliente = Opautomovil.get().getCliente();
+            return cliente;
+        }
+        return null;
     }
 
     /**

@@ -26,7 +26,9 @@
                         <span v-text="$t('tallerMecanicoPoeApp.averia.cliente')">Cliente</span>
                     </dt>
                     <dd>
-                        <span>{{averia.automovil}}</span>
+                        <div v-if="showClient">
+                            <router-link :to="{name: 'ClienteView', params: {clienteId: cliente.id}}">{{cliente.id}} -) {{ cliente.nombre }}</router-link>
+                        </div>
                     </dd>
                     <dt>
                         <span v-text="$t('tallerMecanicoPoeApp.averia.automovil')">Automovil</span>

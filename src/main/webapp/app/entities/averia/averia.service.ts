@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { IAveria } from '@/shared/model/averia.model';
+import { ICliente } from '@/shared/model/cliente.model';
 
 const baseApiUrl = 'api/averias';
 
@@ -26,6 +27,19 @@ export default class AveriaService {
         .get(baseApiUrl + `?IdAutomovil=${id}`)
         .then(res => {
           resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public findClienteAutomovilAverias(IdAutomovil: number): Promise<ICliente> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`api/automovils/clienteof/${IdAutomovil}`)
+        .then(res => {
+          resolve(res.data);
         })
         .catch(err => {
           reject(err);
