@@ -23,18 +23,23 @@ export default class Automovil extends mixins(AlertMixin) {
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.clienteId) {
-        vm.retrieveAllAutomovils(to.params.clienteId);
-      } else {
-        vm.retrieveAllAutomovils();
+        vm.setIdCliente(to.params.clienteId);
       }
+      vm.retrieveAllAutomovils();
     });
   }
 
   public clear(): void {
     this.retrieveAllAutomovils();
   }
-  public retrieveAllAutomovils(clienteId: number = 0): void {
-    this.idCliente = clienteId ? clienteId : 0;
+
+  private setIdCliente(clienteId: number = 0) {
+    if (clienteId && clienteId > 0) {
+      this.idCliente = clienteId;
+    }
+  }
+
+  public retrieveAllAutomovils(): void {
     this.isFetching = true;
 
     if (this.idCliente > 0) {
@@ -83,6 +88,15 @@ export default class Automovil extends mixins(AlertMixin) {
         this.removeId = null;
         this.retrieveAllAutomovils();
         this.closeDialog();
+      })
+      .catch(() => {
+        this.closeDialog();
+        this.$swal({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudo eliminar debido a que tiene registros atados a este automovil',
+          showCloseButton: true,
+        });
       });
   }
 
