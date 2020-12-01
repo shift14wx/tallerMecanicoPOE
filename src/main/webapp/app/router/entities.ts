@@ -336,13 +336,13 @@ export default [
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/entrada/averia/:averiaId',
+    path: '/entrada',
     name: 'Entrada',
     component: Entrada,
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/entradas/averia/:averiaId/automovil/automovilid',
+    path: '/entradas/averia/:averiaId',
     name: 'EntradasAveria',
     component: Entrada,
     meta: { authorities: [Authority.USER] },
@@ -360,8 +360,14 @@ export default [
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/entrada/:entradaId/averia/:averiaId/view',
+    path: '/entrada/:entradaId/view',
     name: 'EntradaView',
+    component: EntradaDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/entrada/:entradaId/view/averia/:averiaId',
+    name: 'EntradaViewAveria',
     component: EntradaDetails,
     meta: { authorities: [Authority.USER] },
   },

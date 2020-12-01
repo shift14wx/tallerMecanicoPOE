@@ -14,7 +14,7 @@ export default class EntradaDetails extends Vue {
         vm.retrieveEntrada(to.params.entradaId);
       }
       if (to.params.averiaId) {
-        vm.setIdAveria(to.params.averiaId, to.prams.entradaId);
+        vm.setIdAveria(to.params.averiaId, to.params.entradaId);
       }
     });
   }
@@ -34,6 +34,9 @@ export default class EntradaDetails extends Vue {
 
   public previousState() {
     // @ts-ignore
-    this.$router.push({ name: 'Entrada', params: { averiaId: this.idAveria > 0 ? this.idAveria : null } });
+    this.$router.push({
+      name: this.idAveria > 0 ? 'EntradasAveria' : 'Entrada',
+      params: { averiaId: this.idAveria > 0 ? this.idAveria : null },
+    });
   }
 }

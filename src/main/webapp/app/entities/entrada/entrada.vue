@@ -61,7 +61,7 @@
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <router-link :to="{name: 'EntradaView', params: {entradaId: entrada.id, averiaId: idAveria}}" tag="button" class="btn btn-info btn-sm details">
+                            <router-link :to="{name: idAveria == 0 ? 'EntradaView' : 'EntradaViewAveria' , params: {entradaId: entrada.id, averiaId: idAveria}}" tag="button" class="btn btn-info btn-sm details">
                                 <font-awesome-icon icon="eye"></font-awesome-icon>
                                 <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                             </router-link>
