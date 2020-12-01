@@ -28,6 +28,8 @@
       "cliente": "Cliente",
       "RealEstado": "Estado de Pagos",
       "estado": "Estado Averia",
+      "totalApagar": "Total a pagar",
+      "faltanteApagar": "Faltante a pagar",
       "automovil": "Automovil",
       "VerDetalles": "Detalles"
     }

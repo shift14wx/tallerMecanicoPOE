@@ -1,7 +1,12 @@
 package com.mecanica.org.web.rest;
 
 import com.mecanica.org.domain.Averia;
+import com.mecanica.org.domain.Entrada;
+import com.mecanica.org.domain.Pago;
+import com.mecanica.org.domain.PagosCalculos;
 import com.mecanica.org.repository.AveriaRepository;
+import com.mecanica.org.repository.EntradaRepository;
+import com.mecanica.org.repository.PagoRepository;
 import com.mecanica.org.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -35,8 +40,14 @@ public class AveriaResource {
 
     private final AveriaRepository averiaRepository;
 
-    public AveriaResource(AveriaRepository averiaRepository) {
+    private final EntradaRepository entradaRepository;
+
+    private final PagoRepository pagoRepository;
+
+    public AveriaResource(AveriaRepository averiaRepository, EntradaRepository entradaRepository, PagoRepository pagoRepository) {
         this.averiaRepository = averiaRepository;
+        this.entradaRepository = entradaRepository;
+        this.pagoRepository = pagoRepository;
     }
 
     /**
@@ -106,6 +117,29 @@ public class AveriaResource {
         log.debug("REST request to get Averia : {}", id);
         Optional<Averia> averia = averiaRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(averia);
+    }
+
+    @GetMapping("/averias/{id}/entradas")
+    public PagosCalculos getAveriaPagosCalculos(@PathVariable Long id) {
+        log.debug("REST request to get Averia : {}", id);
+       try {
+           List<Entrada>  entradas= entradaRepository.findByAveriaId(id);
+           PagosCalculos pagos = new PagosCalculos();
+           Double totalapagar = entradas.stream()
+               .mapToDouble(en -> ( en.getPrecio() ) )
+               .reduce( 0.0,( a, b) -> a+b );
+           List<Pago> ListPagos = pagoRepository.findByAveriaId(id);
+
+           Double pagado = ListPagos.stream()
+               .mapToDouble( pa -> ( pa.getTotal() ) )
+               .reduce(0.0, (a,b) -> a+b );
+
+           pagos.setFaltanteApagar( totalapagar - pagado );
+           pagos.setTotalApagar( totalapagar );
+           return pagos;
+       }catch (Exception e){
+           return null;
+       }
     }
 
     /**

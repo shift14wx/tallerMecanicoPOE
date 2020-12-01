@@ -20,7 +20,8 @@
                         <span v-text="$t('tallerMecanicoPoeApp.averia.pagado')">Pagado</span>
                     </dt>
                     <dd>
-                        <span>{{averia.pagado}}</span>
+                        <div :class="{'alert alert-warning':!averia.pagado,'alert alert-success': averia.pagado}">{{ !averia.pagado ? 'Pendiente' : 'Solventada'}}</div>
+
                     </dd>
                     <dt>
                         <span v-text="$t('tallerMecanicoPoeApp.averia.cliente')">Cliente</span>
@@ -44,6 +45,24 @@
                     <dd>
                         <div v-if="averia.estadoAveria">
                             <router-link :to="{name: 'EstadoAveriaView', params: {estadoAveriaId: averia.estadoAveria.id}}">{{averia.estadoAveria.estado}}</router-link>
+                        </div>
+                    </dd>
+
+                    <dt>
+                        <span v-text="$t('tallerMecanicoPoeApp.averia.totalApagar')">Total a pagar</span>
+                    </dt>
+                    <dd>
+                        <div v-if="TotalApagar">
+                            $ {{ TotalApagar.totalApagar }}
+                        </div>
+                    </dd>
+
+                    <dt>
+                        <span v-text="$t('tallerMecanicoPoeApp.averia.faltanteApagar')">Faltante a pagar</span>
+                    </dt>
+                    <dd>
+                        <div v-if="TotalApagar">
+                            $ {{ TotalApagar.faltanteApagar }}
                         </div>
                     </dd>
                 </dl>

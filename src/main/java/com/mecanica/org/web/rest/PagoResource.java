@@ -1,6 +1,8 @@
 package com.mecanica.org.web.rest;
 
+import com.mecanica.org.domain.Averia;
 import com.mecanica.org.domain.Pago;
+import com.mecanica.org.domain.PagosCalculos;
 import com.mecanica.org.repository.PagoRepository;
 import com.mecanica.org.web.rest.errors.BadRequestAlertException;
 
@@ -35,8 +37,11 @@ public class PagoResource {
 
     private final PagoRepository pagoRepository;
 
-    public PagoResource(PagoRepository pagoRepository) {
+    private final AveriaResource averiaResource;
+
+    public PagoResource(PagoRepository pagoRepository, AveriaResource averiaResource) {
         this.pagoRepository = pagoRepository;
+        this.averiaResource = averiaResource;
     }
 
     /**
@@ -52,10 +57,26 @@ public class PagoResource {
         if (pago.getId() != null) {
             throw new BadRequestAlertException("A new pago cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Pago result = pagoRepository.save(pago);
-        return ResponseEntity.created(new URI("/api/pagos/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
+        PagosCalculos calculos = this.averiaResource.getAveriaPagosCalculos(pago.getAveria().getId());
+        if( calculos.faltanteApagar > 0.0 && pago.getTotal() <= calculos.faltanteApagar ){
+            Pago result = pagoRepository.save(pago);
+            calculos = this.averiaResource.getAveriaPagosCalculos(pago.getAveria().getId());
+
+            // si el faltante a pagar es 0.0 entonces tenemos que actualizar la averia a pagado osea a true;
+            if( calculos.faltanteApagar == 0 ){
+                ResponseEntity<Averia> Opaveria = this.averiaResource.getAveria(pago.getAveria().getId());
+                Averia averia = Opaveria.getBody();
+                averia.setPagado(true);
+                this.averiaResource.updateAveria( averia );
+            }
+
+            return ResponseEntity.created(new URI("/api/pagos/" + result.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                .body(result);
+        }else{
+            throw new BadRequestAlertException("El pago no se pudo realizar debido a que el total de pago es mayor al faltante a pagar, maximo a poder pagar es de $"+calculos.faltanteApagar,ENTITY_NAME,"paymentoutofrange");
+        }
+
     }
 
     /**

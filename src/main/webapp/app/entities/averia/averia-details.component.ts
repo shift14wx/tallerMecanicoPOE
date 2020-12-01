@@ -15,6 +15,8 @@ export default class AveriaDetails extends Vue {
 
   public reactives: number = 0;
 
+  public TotalApagar = {};
+
   public setVehiculoId(automovilId) {
     this.IdAutomovil = automovilId ? automovilId : 0;
   }
@@ -23,11 +25,20 @@ export default class AveriaDetails extends Vue {
     next(vm => {
       if (to.params.averiaId) {
         vm.retrieveAveria(to.params.averiaId);
+        vm.getTotalAPagar(to.params.averiaId);
       }
       if (to.params.automovilId) {
         vm.setVehiculoId(to.params.automovilId);
       }
     });
+  }
+
+  public getTotalAPagar(idAveria: number) {
+    this.averiaService()
+      .getTotalAPagar(idAveria)
+      .then(res => {
+        this.TotalApagar = res;
+      });
   }
 
   public retriveCliente() {

@@ -47,6 +47,19 @@ export default class AveriaService {
     });
   }
 
+  public getTotalAPagar(averiaId: number) {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}/${averiaId}/entradas`)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   public retrieve(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

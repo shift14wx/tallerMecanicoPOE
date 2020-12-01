@@ -71,6 +71,15 @@ export default class PagoUpdate extends Vue {
           this.$router.push({ name: 'Pago', params: { averiaId: this.averiaId > 0 ? this.averiaId : null } });
           const message = this.$t('tallerMecanicoPoeApp.pago.updated', { param: param.id });
           this.alertService().showAlert(message, 'info');
+        })
+        .catch(err => {
+          this.isSaving = false;
+          this.$swal({
+            icon: 'error',
+            title: err.response.data.title,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         });
     } else {
       this.pagoService()
@@ -81,6 +90,15 @@ export default class PagoUpdate extends Vue {
           this.$router.push({ name: 'Pago', params: { averiaId: this.averiaId > 0 ? this.averiaId : null } });
           const message = this.$t('tallerMecanicoPoeApp.pago.created', { param: param.id });
           this.alertService().showAlert(message, 'success');
+        })
+        .catch(err => {
+          this.isSaving = false;
+          this.$swal({
+            icon: 'error',
+            title: err.response.data.title,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         });
     }
   }
