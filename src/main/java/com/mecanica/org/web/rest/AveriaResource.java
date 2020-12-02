@@ -19,10 +19,7 @@ import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -177,10 +174,9 @@ public class AveriaResource {
 
 
         //File file  = ResourceUtils.getFile("classpath:presupuesto.jrxml");
-        Resource resource = resourceLoader.getResource("classpath:templates/presupuesto.jrxml");
-        File file = resource.getFile();
-
-        JasperReport jasperReport  = JasperCompileManager.compileReport(file.getAbsolutePath());
+        ClassLoader cl = this.getClass().getClassLoader();
+        InputStream inputStream = cl.getResourceAsStream("/templates/presupuesto.jrxml");
+        JasperReport jasperReport  = JasperCompileManager.compileReport(inputStream);
         System.out.println("doing");
         List<Entrada> entradas = entradaRepository.findByAveriaId( averiaId );
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(entradas);
