@@ -11,15 +11,24 @@ import com.mecanica.org.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -156,4 +165,33 @@ public class AveriaResource {
         averiaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/averia/report")
+    public void averiaReport(HttpServletResponse response, @RequestParam(required = false) Long averiaId ) throws FileNotFoundException, JRException, IOException,IllegalStateException {
+
+        File file  = ResourceUtils.getFile("classpath:presupuesto.jrxml");
+
+        JasperReport jasperReport  = JasperCompileManager.compileReport(file.getAbsolutePath());
+        System.out.println("doing");
+       // JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(entradaRepository.findByAveriaId( averiaId ));
+        HashMap<String,Object> parameters =new HashMap<String, Object>();
+
+        parameters.put("createdBy", "Compañia");
+        parameters.put("datasource1",this.entradaRepository.findByAveriaId( averiaId ));
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+        final String filePath = "\\";
+        JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + "Presupuesto.pdf");
+
+        response.setContentType("application/x-download");
+        response.setHeader("Content-Disposition", String.format("attachment; filename=\"Presupuestos.pdf\""));
+
+        try {
+            OutputStream out = response.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
+
 }
