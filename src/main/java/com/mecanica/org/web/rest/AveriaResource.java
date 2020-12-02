@@ -11,6 +11,8 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ResourceUtils;
@@ -35,6 +37,8 @@ import java.util.Optional;
 @Transactional
 public class AveriaResource {
 
+    private ResourceLoader resourceLoader;
+
     private final Logger log = LoggerFactory.getLogger(AveriaResource.class);
 
     private static final String ENTITY_NAME = "averia";
@@ -52,7 +56,8 @@ public class AveriaResource {
 
     private final AutomovilRepository automovilRepository;
 
-    public AveriaResource(AveriaRepository averiaRepository, EntradaRepository entradaRepository, PagoRepository pagoRepository, ClienteRepository clienteRepository, AutomovilRepository automovilRepository) {
+    public AveriaResource(ResourceLoader resourceLoader, AveriaRepository averiaRepository, EntradaRepository entradaRepository, PagoRepository pagoRepository, ClienteRepository clienteRepository, AutomovilRepository automovilRepository) {
+        this.resourceLoader = resourceLoader;
         this.averiaRepository = averiaRepository;
         this.entradaRepository = entradaRepository;
         this.pagoRepository = pagoRepository;
@@ -170,7 +175,10 @@ public class AveriaResource {
     @GetMapping("/averia/report")
     public void averiaReport(HttpServletResponse response, @RequestParam(required = false) Long averiaId ) throws FileNotFoundException, JRException, IOException,IllegalStateException {
 
-        File file  = ResourceUtils.getFile("classpath:presupuesto.jrxml");
+
+        //File file  = ResourceUtils.getFile("classpath:presupuesto.jrxml");
+        Resource resource = resourceLoader.getResource("classpath:presupuesto.jrxml");
+        File file = resource.getFile();
 
         JasperReport jasperReport  = JasperCompileManager.compileReport(file.getAbsolutePath());
         System.out.println("doing");
