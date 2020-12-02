@@ -1,12 +1,7 @@
 package com.mecanica.org.web.rest;
 
-import com.mecanica.org.domain.Averia;
-import com.mecanica.org.domain.Entrada;
-import com.mecanica.org.domain.Pago;
-import com.mecanica.org.domain.PagosCalculos;
-import com.mecanica.org.repository.AveriaRepository;
-import com.mecanica.org.repository.EntradaRepository;
-import com.mecanica.org.repository.PagoRepository;
+import com.mecanica.org.domain.*;
+import com.mecanica.org.repository.*;
 import com.mecanica.org.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -53,10 +48,16 @@ public class AveriaResource {
 
     private final PagoRepository pagoRepository;
 
-    public AveriaResource(AveriaRepository averiaRepository, EntradaRepository entradaRepository, PagoRepository pagoRepository) {
+    private final ClienteRepository clienteRepository;
+
+    private final AutomovilRepository automovilRepository;
+
+    public AveriaResource(AveriaRepository averiaRepository, EntradaRepository entradaRepository, PagoRepository pagoRepository, ClienteRepository clienteRepository, AutomovilRepository automovilRepository) {
         this.averiaRepository = averiaRepository;
         this.entradaRepository = entradaRepository;
         this.pagoRepository = pagoRepository;
+        this.clienteRepository = clienteRepository;
+        this.automovilRepository = automovilRepository;
     }
 
     /**
@@ -173,11 +174,26 @@ public class AveriaResource {
 
         JasperReport jasperReport  = JasperCompileManager.compileReport(file.getAbsolutePath());
         System.out.println("doing");
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(entradaRepository.findByAveriaId( averiaId ));
+        List<Entrada> entradas = entradaRepository.findByAveriaId( averiaId );
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(entradas);
         HashMap<String,Object> parameters =new HashMap<String, Object>();
 
         parameters.put("createdBy", "Compañia");
-        parameters.put("datasource1","");
+        PagosCalculos pagos = getAveriaPagosCalculos( averiaId );
+        Optional<Averia> Opaveria = this.averiaRepository.findById( averiaId );
+        Averia averia = Opaveria.get();
+        Optional<Automovil> Opautomovil = this.automovilRepository.findById( averia.getAutomovil().getId() );
+        Automovil automovil = Opautomovil.get();
+        Optional<Cliente> Opcliente = this.clienteRepository.findById( automovil.getCliente().getId() );
+        Cliente cliente = Opcliente.get();
+        parameters.put("totalapagar", "total a pagar: "+pagos.totalApagar.toString() );
+        parameters.put("faltanteapagar","faltante a pagar: "+pagos.faltanteApagar.toString());
+        parameters.put("cliente",cliente.getNombre());
+        parameters.put("automovil",automovil.getModelo()+", año: "+automovil.getYear());
+        parameters.put("averia","averia con id: "+averia.getId());
+        parameters.put("entrada"," N entradas: "+ entradas.size() );
+        parameters.put("estado"," Estado presupuesto: "+ averia.getEstadoAveria().getEstado() );
+        parameters.put("averiaid",""+ averia.getId()+"" );
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,dataSource );
 
         final String filePath = "\\";

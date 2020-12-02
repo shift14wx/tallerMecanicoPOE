@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+
     <style name="Title" forecolor="#FFFFFF" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
     <style name="SubTitle" forecolor="#CCCCCC" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
     <style name="Column header" forecolor="#666666" fontSize="14" isBold="true"/>
@@ -49,6 +50,15 @@
 
     </style>
 
+    <parameter name="totalapagar" class="java.lang.String"/>
+    <parameter name="faltanteapagar" class="java.lang.String"/>
+    <parameter name="cliente" class="java.lang.String"/>
+    <parameter name="automovil" class="java.lang.String"/>
+    <parameter name="averia" class="java.lang.String"/>
+    <parameter name="entrada" class="java.lang.String"/>
+    <parameter name="estado" class="java.lang.String"/>
+    <parameter name="averiaid" class="java.lang.String"/>
+
     <field name="id" class="java.lang.Long">
     </field>
     <field name="descripcion" class="java.lang.String">
@@ -69,7 +79,7 @@
             </staticText>
             <staticText>
                 <reportElement x="0" y="115" width="120" height="15" uuid="33274f5d-5b7e-4be2-a2ff-65d452a618ed"/>
-                <text><![CDATA[ABC Company]]></text>
+                <text><![CDATA[Taller Mecanico]]></text>
             </staticText>
             <line>
                 <reportElement x="0" y="80" width="556" height="1" uuid="806ce5df-1219-4876-ae0c-ca7405b1f246">
@@ -77,25 +87,25 @@
                     <property name="com.jaspersoft.studio.unit.height" value="px"/>
                 </reportElement>
             </line>
-            <staticText>
+            <textField>
                 <reportElement x="0" y="130" width="120" height="15" uuid="1d3045ed-03d6-4253-a959-aeeb491b73ca"/>
-                <text><![CDATA[Company Address]]></text>
-            </staticText>
-            <staticText>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{cliente}]]></textFieldExpression>
+            </textField>
+            <textField>
                 <reportElement x="0" y="145" width="120" height="15" uuid="235bf8b6-1e1e-49c7-b59f-7a46c30b8209"/>
-                <text><![CDATA[Company state1]]></text>
-            </staticText>
-            <staticText>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{automovil}]]></textFieldExpression>
+            </textField>
+            <textField>
                 <reportElement x="0" y="160" width="120" height="15" uuid="665f25c2-8663-4951-b699-1ab863bdeb76"/>
-                <text><![CDATA[Company state 2]]></text>
-            </staticText>
-            <staticText>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{averia}]]></textFieldExpression>
+            </textField>
+            <textField>
                 <reportElement x="410" y="145" width="120" height="15" uuid="b62092ec-9053-4f27-b387-9b25d2909a68"/>
-                <text><![CDATA[Ship state1]]></text>
-            </staticText>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{entrada}]]></textFieldExpression>
+            </textField>
             <staticText>
                 <reportElement x="410" y="115" width="120" height="15" uuid="edbd74ac-0cbd-44c9-8a8e-ccf745191172"/>
-                <text><![CDATA[Ship name]]></text>
+                <text><![CDATA[Descriptor de Presupuestos]]></text>
             </staticText>
             <staticText>
                 <reportElement x="410" y="90" width="84" height="25" uuid="139ebe8d-25b0-411e-986c-270015400874">
@@ -105,16 +115,16 @@
                 <textElement>
                     <font size="16" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Ship to:]]></text>
+                <text><![CDATA[Detalles Precio:]]></text>
             </staticText>
-            <staticText>
+            <textField>
                 <reportElement x="410" y="160" width="120" height="15" uuid="dd52166a-1135-4931-adef-51e7972118bc"/>
-                <text><![CDATA[Ship state 2]]></text>
-            </staticText>
-            <staticText>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{totalapagar}]]></textFieldExpression>
+            </textField>
+            <textField>
                 <reportElement x="410" y="130" width="120" height="15" uuid="2d2f365d-7b12-4a8f-990d-ff528a2660bc"/>
-                <text><![CDATA[Ship Address]]></text>
-            </staticText>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{faltanteapagar}]]></textFieldExpression>
+            </textField>
             <staticText>
                 <reportElement x="415" y="10" width="50" height="20" uuid="0f86baff-6386-4f3f-b3fe-2388707babe8"/>
                 <box rightPadding="4"/>
@@ -126,9 +136,9 @@
                 <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
             </textField>
 
-            <textField pattern="EEEEE dd MMMMM yyyy">
+            <textField>
                 <reportElement x="465" y="30" width="84" height="20" uuid="3836ce65-eca3-4cad-a6de-b1818def0a2b"/>
-                <textFieldExpression><![CDATA["INV0001"]]></textFieldExpression>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{averiaid}]]></textFieldExpression>
             </textField>
             <staticText>
                 <reportElement x="415" y="30" width="50" height="20" uuid="0b3f9342-da78-4cfa-9fc5-2301c4749678"/>
@@ -154,10 +164,10 @@
                 <reportElement x="95" y="25" width="205" height="15" uuid="c226e44d-3bb5-4145-b0b3-903bf1d79fde"/>
                 <text><![CDATA[Detalle de presupuesto]]></text>
             </staticText>
-            <staticText>
+            <textField>
                 <reportElement x="95" y="40" width="205" height="15" uuid="b96f7183-44f8-43ad-ba60-43d8fbf50b6e"/>
-                <text><![CDATA[00]]></text>
-            </staticText>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{estado}]]></textFieldExpression>
+            </textField>
         </band>
     </title>
     <columnHeader>
@@ -229,14 +239,14 @@
                     <bottomPen lineWidth="1.1" lineStyle="Dashed"/>
                     <rightPen lineWidth="1.1" lineStyle="Dashed"/>
                 </box>
-                <text><![CDATA[Your notes here]]></text>
+                <text><![CDATA[Sellos aqui]]></text>
             </staticText>
             <staticText>
                 <reportElement positionType="Float" mode="Opaque" x="0" y="147" width="556" height="30" backcolor="#E6E8E9" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
 
                 </textElement>
-                <text><![CDATA[THANKYOU FOR YOUR BUSINESS]]></text>
+                <text><![CDATA[Gracias por preferirnos]]></text>
             </staticText>
         </band>
     </lastPageFooter>
