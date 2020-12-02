@@ -1,68 +1,243 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN"
-    "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+    <style name="Title" forecolor="#FFFFFF" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+    <style name="SubTitle" forecolor="#CCCCCC" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+    <style name="Column header" forecolor="#666666" fontSize="14" isBold="true"/>
+    <style name="Detail" mode="Transparent" />
+    <style name="Row" mode="Transparent" pdfFontName="Times-Roman">
+        <conditionalStyle>
+            <conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+            <style mode="Opaque" backcolor="#EEEFF0"/>
+        </conditionalStyle>
+    </style>
+    <style name="Table">
+        <box>
+            <pen lineWidth="1.0" lineColor="#000000"/>
+            <topPen lineWidth="1.0" lineColor="#000000"/>
+            <leftPen lineWidth="1.0" lineColor="#000000"/>
+            <bottomPen lineWidth="1.0" lineColor="#000000"/>
+            <rightPen lineWidth="1.0" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_CH" mode="Opaque" backcolor="#CACED0">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
 
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
-   http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
-              name="freport" pageWidth="595" pageHeight="842"
-              columnWidth="555" leftMargin="20" rightMargin="20"
-              topMargin="20" bottomMargin="20">
+    </style>
 
-    <style name="field" fontSize="11" />
-    <style name="textRight" style="field" hAlign="Right" />
+    <field name="id" class="java.lang.Long">
+    </field>
+    <field name="descripcion" class="java.lang.String">
+    </field>
+    <field name="precio" class="java.lang.Double">
+    </field>
+    <title>
+        <band height="196" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="90" width="160" height="25" uuid="57aed2b1-4f4e-40a3-a6ad-54dae8dd4c5a">
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement>
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Datos Generales]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="115" width="120" height="15" uuid="33274f5d-5b7e-4be2-a2ff-65d452a618ed"/>
+                <text><![CDATA[ABC Company]]></text>
+            </staticText>
+            <line>
+                <reportElement x="0" y="80" width="556" height="1" uuid="806ce5df-1219-4876-ae0c-ca7405b1f246">
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+            </line>
+            <staticText>
+                <reportElement x="0" y="130" width="120" height="15" uuid="1d3045ed-03d6-4253-a959-aeeb491b73ca"/>
+                <text><![CDATA[Company Address]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="145" width="120" height="15" uuid="235bf8b6-1e1e-49c7-b59f-7a46c30b8209"/>
+                <text><![CDATA[Company state1]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="160" width="120" height="15" uuid="665f25c2-8663-4951-b699-1ab863bdeb76"/>
+                <text><![CDATA[Company state 2]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="410" y="145" width="120" height="15" uuid="b62092ec-9053-4f27-b387-9b25d2909a68"/>
+                <text><![CDATA[Ship state1]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="410" y="115" width="120" height="15" uuid="edbd74ac-0cbd-44c9-8a8e-ccf745191172"/>
+                <text><![CDATA[Ship name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="410" y="90" width="84" height="25" uuid="139ebe8d-25b0-411e-986c-270015400874">
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement>
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Ship to:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="410" y="160" width="120" height="15" uuid="dd52166a-1135-4931-adef-51e7972118bc"/>
+                <text><![CDATA[Ship state 2]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="410" y="130" width="120" height="15" uuid="2d2f365d-7b12-4a8f-990d-ff528a2660bc"/>
+                <text><![CDATA[Ship Address]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="415" y="10" width="50" height="20" uuid="0f86baff-6386-4f3f-b3fe-2388707babe8"/>
+                <box rightPadding="4"/>
+                <textElement textAlignment="Right"/>
+                <text><![CDATA[Date:]]></text>
+            </staticText>
+            <textField pattern="EEEEE dd MMMMM yyyy">
+                <reportElement x="465" y="10" width="84" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
 
-    <subDataset name="entradas">
-        <field name="id" class="java.lang.Long"/>
-        <field name="descripcion" class="java.lang.String"/>
-        <field name="precio" class="java.lang.Integer"/>
-    </subDataset>
-
-    <parameter name="entradas" class="java.util.List"/>
-
+            <textField pattern="EEEEE dd MMMMM yyyy">
+                <reportElement x="465" y="30" width="84" height="20" uuid="3836ce65-eca3-4cad-a6de-b1818def0a2b"/>
+                <textFieldExpression><![CDATA["INV0001"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="415" y="30" width="50" height="20" uuid="0b3f9342-da78-4cfa-9fc5-2301c4749678"/>
+                <box rightPadding="4"/>
+                <textElement textAlignment="Right"/>
+                <text><![CDATA[Numero #]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="95" y="0" width="210" height="25" uuid="e622555d-198b-4ccd-a4a1-c59c53304058">
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement>
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Taller Mecanico]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="95" y="55" width="205" height="15" uuid="b8cc42fd-b569-497d-834d-7e854040ad18"/>
+                <text><![CDATA[detalles]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="95" y="25" width="205" height="15" uuid="c226e44d-3bb5-4145-b0b3-903bf1d79fde"/>
+                <text><![CDATA[Detalle de presupuesto]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="95" y="40" width="205" height="15" uuid="b96f7183-44f8-43ad-ba60-43d8fbf50b6e"/>
+                <text><![CDATA[00]]></text>
+            </staticText>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="20">
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="0" y="0" width="185" height="20" forecolor="#000000" uuid="d936244d-eafc-4585-9402-d9a07937ffa4">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="529259c4-8a7b-48f3-aeb7-10e546c8d286"/>
+                </reportElement>
+                <textElement>
+                </textElement>
+                <text><![CDATA[nº]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="185" y="0" width="185" height="20" forecolor="#000000" uuid="73f6eae8-2624-48cf-aad1-0dcdfdc8f583">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b124ab5d-29ed-46de-8118-7b96fd9f74e3"/>
+                </reportElement>
+                <textElement>
+                </textElement>
+                <text><![CDATA[Descripción]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="370" y="0" width="185" height="20" forecolor="#000000" uuid="edc5791b-33cb-4de2-92dd-15973c9c9d7d">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a31e41a9-42a1-4afd-9a23-6f2922e04490"/>
+                </reportElement>
+                <textElement>
+                </textElement>
+                <text><![CDATA[Precio]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
     <detail>
-        <band height="15">
+        <band height="20">
+            <textField>
+                <reportElement style="Detail" positionType="Float" x="0" y="0" width="185" height="20" uuid="d861d3c7-9f00-4bd1-abd3-404d1243f90f">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="529259c4-8a7b-48f3-aeb7-10e546c8d286"/>
+                </reportElement>
+                <textElement>
 
-            <componentElement>
-                <reportElement x="0" y="0" width="100" height="15"/>
-                <jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components"
-                         xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components
-                                            http://jasperreports.sourceforge.net/xsd/components.xsd">
+                </textElement>
+                <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Detail" positionType="Float" x="185" y="0" width="185" height="20" uuid="0acfe9ff-1c6c-41c4-8710-2f7f6bf5a064">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b124ab5d-29ed-46de-8118-7b96fd9f74e3"/>
+                </reportElement>
+                <textElement>
 
-                    <datasetRun subDataset="entradas">
-                        <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{datasource2})]]></dataSourceExpression>
-                    </datasetRun>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Detail" positionType="Float" x="370" y="0" width="185" height="20" uuid="8343e269-604a-40ce-afb0-974837713a97">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a31e41a9-42a1-4afd-9a23-6f2922e04490"/>
+                </reportElement>
+                <textElement>
 
-                    <jr:listContents height="15" width="220">
-                        <textField>
-                            <reportElement x="0" y="0" width="20" height="15" style="field" />
-
-                            <textElement />
-
-                            <textFieldExpression class="java.lang.Long"><![CDATA[$F{id}]]></textFieldExpression>
-                        </textField>
-
-                        <textField>
-                            <reportElement x="50" y="0" width="80" height="15" style="field" />
-
-                            <textElement />
-
-                            <textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
-                        </textField>
-
-                        <textField>
-                            <reportElement x="130" y="0" width="80" height="15" style="textRight" />
-                            <textElement />
-
-                            <textFieldExpression class="java.lang.Integer"><![CDATA[$F{population}]]></textFieldExpression>
-                        </textField>
-
-                    </jr:listContents>
-                </jr:list>
-            </componentElement>
-
+                </textElement>
+                <textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+            </textField>
         </band>
     </detail>
+    <lastPageFooter>
+        <band height="177">
+            <staticText>
+                <reportElement positionType="Float" x="-1" y="30" width="261" height="101" uuid="1a0d7088-5af7-4865-8be1-41ec5f51fb36"/>
+                <box>
+                    <topPen lineWidth="1.1" lineStyle="Dashed"/>
+                    <leftPen lineWidth="1.1" lineStyle="Dashed"/>
+                    <bottomPen lineWidth="1.1" lineStyle="Dashed"/>
+                    <rightPen lineWidth="1.1" lineStyle="Dashed"/>
+                </box>
+                <text><![CDATA[Your notes here]]></text>
+            </staticText>
+            <staticText>
+                <reportElement positionType="Float" mode="Opaque" x="0" y="147" width="556" height="30" backcolor="#E6E8E9" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
 
+                </textElement>
+                <text><![CDATA[THANKYOU FOR YOUR BUSINESS]]></text>
+            </staticText>
+        </band>
+    </lastPageFooter>
 </jasperReport>

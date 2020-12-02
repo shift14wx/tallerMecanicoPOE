@@ -173,12 +173,12 @@ public class AveriaResource {
 
         JasperReport jasperReport  = JasperCompileManager.compileReport(file.getAbsolutePath());
         System.out.println("doing");
-       // JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(entradaRepository.findByAveriaId( averiaId ));
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(entradaRepository.findByAveriaId( averiaId ));
         HashMap<String,Object> parameters =new HashMap<String, Object>();
 
         parameters.put("createdBy", "Compañia");
-        parameters.put("datasource1",this.entradaRepository.findByAveriaId( averiaId ));
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+        parameters.put("datasource1","");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,dataSource );
 
         final String filePath = "\\";
         JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + "Presupuesto.pdf");
