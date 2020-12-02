@@ -48,6 +48,9 @@
         "name": "generator-jhipster-vuejs",
         "version": "1.9.2"
       }
-    ]
+    ],
+    "herokuAppName": "taller-mecanico-poe",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "14"
   }
 }
