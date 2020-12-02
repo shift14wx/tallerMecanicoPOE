@@ -108,11 +108,11 @@ public class AveriaResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of averias in body.
      */
     @GetMapping("/averias")
-    public List<Averia> getAllAverias( @RequestParam(required = false) Long IdAutomovil ) {
+    public List<Averia> getAllAverias(@RequestParam(required = false) Long IdAutomovil) {
         log.debug("REST request to get all Averias");
         log.info("retornando averias");
-        if( IdAutomovil != null && IdAutomovil > 0 ){
-            log.info("returning all averias of automovil with id: "+IdAutomovil.toString());
+        if (IdAutomovil != null && IdAutomovil > 0) {
+            log.info("returning all averias of automovil with id: " + IdAutomovil.toString());
             return averiaRepository.findByAutomovilId(IdAutomovil);
         }
         return averiaRepository.findAll();
@@ -134,26 +134,26 @@ public class AveriaResource {
     @GetMapping("/averias/{id}/entradas")
     public PagosCalculos getAveriaPagosCalculos(@PathVariable Long id) {
         log.debug("REST request to get Averia : {}", id);
-       try {
-           List<Entrada>  entradas= entradaRepository.findByAveriaId(id);
-           PagosCalculos pagos = new PagosCalculos();
+        try {
+            List<Entrada> entradas = entradaRepository.findByAveriaId(id);
+            PagosCalculos pagos = new PagosCalculos();
 
-           Double totalapagar = entradas.stream()
-               .mapToDouble(en -> ( en.getPrecio() ) )
-               .reduce( 0.0,( a, b) -> a+b );
-           totalapagar = Math.floor( totalapagar * 100 ) /100;
-           List<Pago> ListPagos = pagoRepository.findByAveriaId(id);
+            Double totalapagar = entradas.stream()
+                .mapToDouble(en -> (en.getPrecio()))
+                .reduce(0.0, (a, b) -> a + b);
+            totalapagar = Math.floor(totalapagar * 100) / 100;
+            List<Pago> ListPagos = pagoRepository.findByAveriaId(id);
 
-           Double pagado = ListPagos.stream()
-               .mapToDouble( pa -> ( pa.getTotal() ) )
-               .reduce(0.0, (a,b) -> a+b );
-           pagado = Math.floor( pagado * 100) / 100;
-           pagos.setFaltanteApagar( Math.ceil( (totalapagar - pagado) *100 ) /100 );
-           pagos.setTotalApagar( totalapagar );
-           return pagos;
-       }catch (Exception e){
-           return null;
-       }
+            Double pagado = ListPagos.stream()
+                .mapToDouble(pa -> (pa.getTotal()))
+                .reduce(0.0, (a, b) -> a + b);
+            pagado = Math.floor(pagado * 100) / 100;
+            pagos.setFaltanteApagar(Math.ceil((totalapagar - pagado) * 100) / 100);
+            pagos.setTotalApagar(totalapagar);
+            return pagos;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**
@@ -170,35 +170,33 @@ public class AveriaResource {
     }
 
     @GetMapping("/averia/report")
-    public void averiaReport(HttpServletResponse response, @RequestParam(required = false) Long averiaId ) throws FileNotFoundException, JRException, IOException,IllegalStateException {
+    public void averiaReport(HttpServletResponse response, @RequestParam(required = false) Long averiaId) throws FileNotFoundException, JRException, IOException, IllegalStateException {
 
 
-        //File file  = ResourceUtils.getFile("classpath:presupuesto.jrxml");
-        ClassLoader cl = this.getClass().getClassLoader();
-        InputStream inputStream = cl.getResourceAsStream("/templates/presupuesto.jrxml");
-        JasperReport jasperReport  = JasperCompileManager.compileReport(inputStream);
+        InputStream inputStream = ResourceUtils.getURL("classpath:presupuesto.jrxml").openStream();
+        JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
         System.out.println("doing");
-        List<Entrada> entradas = entradaRepository.findByAveriaId( averiaId );
+        List<Entrada> entradas = entradaRepository.findByAveriaId(averiaId);
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(entradas);
-        HashMap<String,Object> parameters =new HashMap<String, Object>();
+        HashMap<String, Object> parameters = new HashMap<String, Object>();
 
         parameters.put("createdBy", "Compañia");
-        PagosCalculos pagos = getAveriaPagosCalculos( averiaId );
-        Optional<Averia> Opaveria = this.averiaRepository.findById( averiaId );
+        PagosCalculos pagos = getAveriaPagosCalculos(averiaId);
+        Optional<Averia> Opaveria = this.averiaRepository.findById(averiaId);
         Averia averia = Opaveria.get();
-        Optional<Automovil> Opautomovil = this.automovilRepository.findById( averia.getAutomovil().getId() );
+        Optional<Automovil> Opautomovil = this.automovilRepository.findById(averia.getAutomovil().getId());
         Automovil automovil = Opautomovil.get();
-        Optional<Cliente> Opcliente = this.clienteRepository.findById( automovil.getCliente().getId() );
+        Optional<Cliente> Opcliente = this.clienteRepository.findById(automovil.getCliente().getId());
         Cliente cliente = Opcliente.get();
-        parameters.put("totalapagar", "total a pagar: "+pagos.totalApagar.toString() );
-        parameters.put("faltanteapagar","faltante a pagar: "+pagos.faltanteApagar.toString());
-        parameters.put("cliente",cliente.getNombre());
-        parameters.put("automovil",automovil.getModelo()+", año: "+automovil.getYear());
-        parameters.put("averia","averia con id: "+averia.getId());
-        parameters.put("entrada"," N entradas: "+ entradas.size() );
-        parameters.put("estado"," Estado presupuesto: "+ averia.getEstadoAveria().getEstado() );
-        parameters.put("averiaid",""+ averia.getId()+"" );
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,dataSource );
+        parameters.put("totalapagar", "total a pagar: " + pagos.totalApagar.toString());
+        parameters.put("faltanteapagar", "faltante a pagar: " + pagos.faltanteApagar.toString());
+        parameters.put("cliente", cliente.getNombre());
+        parameters.put("automovil", automovil.getModelo() + ", año: " + automovil.getYear());
+        parameters.put("averia", "averia con id: " + averia.getId());
+        parameters.put("entrada", " N entradas: " + entradas.size());
+        parameters.put("estado", " Estado presupuesto: " + averia.getEstadoAveria().getEstado());
+        parameters.put("averiaid", "" + averia.getId() + "");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 
         final String filePath = "\\";
         JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + "Presupuesto.pdf");
@@ -212,6 +210,9 @@ public class AveriaResource {
         } catch (Exception e) {
             //TODO: handle exception
         }
-    }
 
+    }
 }
+
+
+
