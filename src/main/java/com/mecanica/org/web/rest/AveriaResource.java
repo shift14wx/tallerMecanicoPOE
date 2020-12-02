@@ -177,7 +177,7 @@ public class AveriaResource {
 
 
         //File file  = ResourceUtils.getFile("classpath:presupuesto.jrxml");
-        Resource resource = resourceLoader.getResource("classpath:presupuesto.jrxml");
+        Resource resource = resourceLoader.getResource("classpath:templates/presupuesto.jrxml");
         File file = resource.getFile();
 
         JasperReport jasperReport  = JasperCompileManager.compileReport(file.getAbsolutePath());

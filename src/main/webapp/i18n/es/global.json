@@ -4,9 +4,9 @@
     "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=es\">actualice su navegador</a> para mejorar su experiencia.",
     "menu": {
       "home": "Inicio",
-      "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+      "jhipster-needle-menu-add-element": "will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Entidades",
+        "main": "Administración",
         "automovil": "Automovil",
         "tipoCombustible": "Tipo Combustible",
         "clasificacionAutomovil": "Clasificacion Automovil",
@@ -33,7 +33,7 @@
         "register": "Crear una cuenta"
       },
       "admin": {
-        "main": "Administración",
+        "main": "Documentacion",
         "userManagement": "Gestión de usuarios",
         "tracker": "Registro de usuarios",
         "metrics": "Métricas",

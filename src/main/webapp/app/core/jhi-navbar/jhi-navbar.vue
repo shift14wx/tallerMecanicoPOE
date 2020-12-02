@@ -3,18 +3,18 @@
         <b-navbar-brand class="logo" b-link to="/">
             <span class="logo-img"></span>
             <span v-text="$t('global.title')" class="navbar-title">TallerMecanicoPOE</span> <span class="navbar-version">{{version}}</span>
-        </b-navbar-brand>      
-        <b-navbar-toggle 
-        right 
-        class="jh-navbar-toggler d-lg-none" 
-        href="javascript:void(0);"  
-        data-toggle="collapse" 
-        target="header-tabs" 
-        aria-expanded="false" 
+        </b-navbar-brand>
+        <b-navbar-toggle
+        right
+        class="jh-navbar-toggler d-lg-none"
+        href="javascript:void(0);"
+        data-toggle="collapse"
+        target="header-tabs"
+        aria-expanded="false"
         aria-label="Toggle navigation">
             <font-awesome-icon icon="bars" />
         </b-navbar-toggle>
-           
+
         <b-collapse is-nav id="header-tabs">
             <b-navbar-nav class="ml-auto">
                 <b-nav-item to="/" exact>
@@ -99,31 +99,11 @@
                     class="pointer">
                     <span slot="button-content" class="navbar-dropdown-menu">
                         <font-awesome-icon icon="cogs" />
-                        <span v-text="$t('global.menu.admin.main')">Administration</span>
+                        <span v-text="$t('global.menu.admin.main')">Documentación</span>
                     </span>
-                    <b-dropdown-item to="/admin/user-management" active-class="active">
-                        <font-awesome-icon icon="user" />
-                        <span v-text="$t('global.menu.admin.userManagement')">User management</span>
-                    </b-dropdown-item>
-                    <b-dropdown-item  to="/admin/jhi-metrics" active-class="active">
-                        <font-awesome-icon icon="tachometer-alt" />
-                        <span v-text="$t('global.menu.admin.metrics')">Metrics</span>
-                    </b-dropdown-item>
-                    <b-dropdown-item to="/admin/jhi-health" active-class="active">
-                        <font-awesome-icon icon="heart" />
-                        <span v-text="$t('global.menu.admin.health')">Health</span>
-                    </b-dropdown-item>
-                    <b-dropdown-item  to="/admin/jhi-configuration" active-class="active">
-                        <font-awesome-icon icon="list" />
-                        <span v-text="$t('global.menu.admin.configuration')">Configuration</span>
-                    </b-dropdown-item>
                     <b-dropdown-item  to="/admin/audits" active-class="active">
                         <font-awesome-icon icon="bell" />
                         <span v-text="$t('global.menu.admin.audits')">Audits</span>
-                    </b-dropdown-item>
-                    <b-dropdown-item  to="/admin/logs" active-class="active">
-                        <font-awesome-icon icon="tasks" />
-                        <span v-text="$t('global.menu.admin.logs')">Logs</span>
                     </b-dropdown-item>
                     <b-dropdown-item v-if="swaggerEnabled"  to="/admin/docs" active-class="active">
                         <font-awesome-icon icon="book" />
