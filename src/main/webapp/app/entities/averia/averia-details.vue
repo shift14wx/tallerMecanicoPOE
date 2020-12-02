@@ -83,6 +83,11 @@
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline" >Ver Entradas</span>
                 </router-link>
+
+                <a v-bind:href="'/api/averia/report?averiaId='+averia.id" target="_blank" tag="button" class="btn btn-info details">
+                    <font-awesome-icon icon="eye"></font-awesome-icon>
+                    <span class="d-none d-md-inline" >Imprimir reporte</span>
+                </a>
             </div>
         </div>
     </div>
