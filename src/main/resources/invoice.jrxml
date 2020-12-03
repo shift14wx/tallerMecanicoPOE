@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8c78f845-2cea-4d63-a3a1-ca0e2de4f117">
+
+    <parameter name="totalpago" class="java.lang.String"/>
+    <parameter name="faltanteapagar" class="java.lang.String"/>
+    <parameter name="cliente" class="java.lang.String"/>
+    <parameter name="automovil" class="java.lang.String"/>
+    <parameter name="averia" class="java.lang.String"/>
+    <parameter name="entrada" class="java.lang.String"/>
+    <parameter name="estado" class="java.lang.String"/>
+    <parameter name="averiaid" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+
+
+
+    <title>
+        <band height="80" splitType="Stretch">
+            <textField evaluationTime="Column" pattern="MMMMM dd, yyyy">
+                <reportElement x="460" y="10" width="100" height="30" uuid="e133f29e-93ee-4f8a-9971-4eb977f7acd5"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="350" y="10" width="100" height="30" uuid="46359912-1ba2-400b-b71b-2d8aa9b559f6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Fecha]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="-20" y="0" width="220" height="80" uuid="f1876cbd-b131-4b8b-987f-ef108b555ac9"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Taller Mecanico]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="350" y="50" width="100" height="30" uuid="da439c2c-e995-433a-b28f-c3551e439cc7"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Prepuesto nº]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="460" y="50" width="100" height="30" uuid="8cd84ade-bab9-4bfe-96fe-c104b4ae98f8"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{averiaid}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="44" splitType="Stretch">
+            <staticText>
+                <reportElement x="-20" y="0" width="600" height="44" uuid="eab078cd-1ee6-40d7-8a7e-c8f5e521f577"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Recibo]]></text>
+            </staticText>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="61" splitType="Stretch">
+            <staticText>
+                <reportElement x="-20" y="0" width="160" height="61" uuid="69eaf089-098c-44a6-b760-08b230170bda"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="false"/>
+                </textElement>
+                <text><![CDATA[A nombre de :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="210" y="0" width="270" height="61" uuid="0bd4a006-0a53-4ddd-b428-fcb76f396156"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{cliente}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="130" splitType="Stretch">
+            <line>
+                <reportElement x="0" y="10" width="560" height="1" uuid="da7be9e2-d9c5-4ee4-bb9c-d182776a8c06"/>
+            </line>
+            <staticText>
+                <reportElement x="-20" y="10" width="600" height="44" uuid="7987e2ac-20d6-4cc2-b6c1-2cb7c062167c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Detalles]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="10" y="60" width="100" height="30" uuid="6ddf1886-7716-48b3-a2b8-ce92f3b7b640"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Total: $]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="120" y="60" width="100" height="30" uuid="77b61a79-ec0f-4ecf-9ff1-04a11667cbf7"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{totalpago}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="100" width="100" height="30" uuid="3615a0ff-0463-456d-bc61-ca153db57116"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Saldo: $]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="120" y="100" width="100" height="30" uuid="9d85c6ee-0d85-4b11-bfeb-a10f6532aab3"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{faltanteapagar}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="45" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="59" splitType="Stretch">
+            <staticText>
+                <reportElement x="-20" y="0" width="595" height="59" uuid="2887452e-443f-493c-8dc0-877ae143d0f6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Gracias por preferirnos!]]></text>
+            </staticText>
+        </band>
+    </summary>
+</jasperReport>

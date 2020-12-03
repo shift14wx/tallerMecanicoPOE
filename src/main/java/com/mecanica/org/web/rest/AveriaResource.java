@@ -212,6 +212,51 @@ public class AveriaResource {
         }
 
     }
+
+    @GetMapping("/averia/pago/invoice")
+    public void averiaPago(HttpServletResponse response, @RequestParam(required = false) Long averiaId, @RequestParam(required = true) Long pagoId) throws FileNotFoundException, JRException, IOException, IllegalStateException {
+
+
+        InputStream inputStream = ResourceUtils.getURL("classpath:invoice.jrxml").openStream();
+        JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+
+        List<Entrada> entradas = entradaRepository.findByAveriaId(averiaId);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(entradas);
+        HashMap<String, Object> parameters = new HashMap<String, Object>();
+
+        PagosCalculos pagos = getAveriaPagosCalculos(averiaId);
+        Optional<Averia> Opaveria = this.averiaRepository.findById(averiaId);
+        Averia averia = Opaveria.get();
+        Optional<Automovil> Opautomovil = this.automovilRepository.findById(averia.getAutomovil().getId());
+        Automovil automovil = Opautomovil.get();
+        Optional<Cliente> Opcliente = this.clienteRepository.findById(automovil.getCliente().getId());
+        Cliente cliente = Opcliente.get();
+        Optional<Pago> Oppago = this.pagoRepository.findById(pagoId);
+        String pagoTotal = String.format("%.2f",Oppago.get().getTotal());
+        parameters.put("totalpago", pagoTotal);
+        parameters.put("faltanteapagar",pagos.faltanteApagar.toString());
+        parameters.put("cliente", cliente.getNombre());
+        parameters.put("automovil", automovil.getModelo() + ", año: " + automovil.getYear());
+        parameters.put("averia", "averia con id: " + averia.getId());
+        parameters.put("entrada", " N entradas: " + entradas.size());
+        parameters.put("estado", " Estado presupuesto: " + averia.getEstadoAveria().getEstado());
+        parameters.put("averiaid", "" + averia.getId() + "");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+        final String filePath = "\\";
+        JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + "invoice.pdf");
+
+        response.setContentType("application/x-download");
+        response.setHeader("Content-Disposition", String.format("attachment; filename=\"invoice.pdf\""));
+
+        try {
+            OutputStream out = response.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+
+    }
 }
 
 

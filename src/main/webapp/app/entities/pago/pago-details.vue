@@ -33,6 +33,10 @@
                 <router-link v-if="pago.id" :to="{name: 'PagoEdit', params: {pagoId: pago.id, averiaId : averiaId}}" tag="button" class="btn btn-primary">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.edit')"> Edit</span>
                 </router-link>
+
+                <a v-bind:href="'/api/averia/pago/invoice?averiaId='+pago.averia.id+'&pagoId='+pago.id" target="_blank" class="btn btn-warning">
+                    <font-awesome-icon icon="eye"></font-awesome-icon>&nbsp;<span> Imprimir ticket</span>
+                </a>
             </div>
         </div>
     </div>
