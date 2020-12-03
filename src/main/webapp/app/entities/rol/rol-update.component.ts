@@ -11,7 +11,9 @@ import RolService from './rol.service';
 
 const validations: any = {
   rol: {
-    rol: {},
+    rol: {
+      required,
+    },
   },
 };
 

@@ -11,8 +11,15 @@ import BitacoraAveriaService from './bitacora-averia.service';
 
 const validations: any = {
   bitacoraAveria: {
-    descripcion: {},
-    fechaBitacora: {},
+    descripcion: {
+      required,
+    },
+    fechaBitacora: {
+      required,
+    },
+    averia: {
+      required,
+    },
   },
 };
 

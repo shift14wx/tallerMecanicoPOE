@@ -11,7 +11,9 @@ import ServicioService from './servicio.service';
 
 const validations: any = {
   servicio: {
-    servicio: {},
+    servicio: {
+      required,
+    },
   },
 };
 

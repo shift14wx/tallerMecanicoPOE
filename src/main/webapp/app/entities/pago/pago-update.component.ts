@@ -1,6 +1,6 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
+import { numeric, required, minLength, maxLength, minValue, maxValue, decimal } from 'vuelidate/lib/validators';
 
 import AveriaService from '../averia/averia.service';
 import { IAveria } from '@/shared/model/averia.model';
@@ -11,8 +11,16 @@ import PagoService from './pago.service';
 
 const validations: any = {
   pago: {
-    fechaPago: {},
-    total: {},
+    fechaPago: {
+      required,
+    },
+    total: {
+      required,
+      decimal,
+    },
+    averia: {
+      required,
+    },
   },
 };
 

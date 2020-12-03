@@ -1,6 +1,6 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
+import { numeric, required, minLength, maxLength, minValue, maxValue, email } from 'vuelidate/lib/validators';
 
 import AutomovilService from '../automovil/automovil.service';
 import { IAutomovil } from '@/shared/model/automovil.model';
@@ -11,10 +11,21 @@ import ClienteService from './cliente.service';
 
 const validations: any = {
   cliente: {
-    nombre: {},
-    telefono: {},
-    email: {},
-    dui: {},
+    nombre: {
+      required,
+    },
+    telefono: {
+      minLength: minLength(8),
+      required,
+    },
+    email: {
+      required,
+      email,
+    },
+    dui: {
+      required,
+      minLength: minLength(8),
+    },
   },
 };
 

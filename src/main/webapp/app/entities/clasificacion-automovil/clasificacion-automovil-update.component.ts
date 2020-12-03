@@ -11,7 +11,9 @@ import ClasificacionAutomovilService from './clasificacion-automovil.service';
 
 const validations: any = {
   clasificacionAutomovil: {
-    clasificacion: {},
+    clasificacion: {
+      required,
+    },
   },
 };
 

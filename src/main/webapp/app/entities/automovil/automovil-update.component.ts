@@ -23,14 +23,48 @@ import AutomovilService from './automovil.service';
 
 const validations: any = {
   automovil: {
-    placa: {},
-    modelo: {},
-    color: {},
-    year: {},
-    nasientos: {},
-    estadogeneralautomovil: {},
-    numeromotor: {},
-    numerochasisgrabado: {},
+    placa: {
+      required,
+      minLength: minLength(1),
+    },
+    modelo: {
+      required,
+    },
+    color: {
+      required,
+    },
+    year: {
+      required,
+      numeric,
+    },
+    nasientos: {
+      required,
+      numeric,
+    },
+    estadogeneralautomovil: {
+      required,
+    },
+    numeromotor: {
+      required,
+    },
+    numerochasisgrabado: {
+      required,
+    },
+    tipoAutomovil: {
+      required,
+    },
+    clasificacionAutomovil: {
+      required,
+    },
+    cliente: {
+      required,
+    },
+    marca: {
+      required,
+    },
+    tipoCombustible: {
+      required,
+    },
   },
 };
 

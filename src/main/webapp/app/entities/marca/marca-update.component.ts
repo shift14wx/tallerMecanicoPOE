@@ -11,7 +11,9 @@ import MarcaService from './marca.service';
 
 const validations: any = {
   marca: {
-    marca: {},
+    marca: {
+      required,
+    },
   },
 };
 

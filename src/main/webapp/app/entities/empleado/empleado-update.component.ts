@@ -14,10 +14,24 @@ import EmpleadoService from './empleado.service';
 
 const validations: any = {
   empleado: {
-    nombre: {},
-    edad: {},
-    dui: {},
-    telefono: {},
+    nombre: {
+      required,
+    },
+    edad: {
+      required,
+      numeric,
+    },
+    dui: {
+      required,
+      minLength: minLength(8),
+    },
+    telefono: {
+      required,
+      minLength: minLength(8),
+    },
+    rol: {
+      required,
+    },
   },
 };
 

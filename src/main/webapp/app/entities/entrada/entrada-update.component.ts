@@ -1,6 +1,6 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
+import { numeric, required, minLength, maxLength, minValue, maxValue, decimal } from 'vuelidate/lib/validators';
 
 import ServicioService from '../servicio/servicio.service';
 import { IServicio } from '@/shared/model/servicio.model';
@@ -17,9 +17,23 @@ import EntradaService from './entrada.service';
 
 const validations: any = {
   entrada: {
-    descripcion: {},
+    descripcion: {
+      required,
+    },
     activa: {},
-    precio: {},
+    precio: {
+      required,
+      decimal,
+    },
+    servicio: {
+      required,
+    },
+    averia: {
+      required,
+    },
+    empleado: {
+      required,
+    },
   },
 };
 

@@ -11,7 +11,10 @@ import TipoCombustibleService from './tipo-combustible.service';
 
 const validations: any = {
   tipoCombustible: {
-    combustible: {},
+    combustible: {
+      required,
+      minLength: minLength(1),
+    },
   },
 };
 

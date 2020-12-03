@@ -18,12 +18,23 @@ import { IEstadoAveria } from '@/shared/model/estado-averia.model';
 import AlertService from '@/shared/alert/alert.service';
 import { IAveria, Averia } from '@/shared/model/averia.model';
 import AveriaService from './averia.service';
+import { required, minLength } from 'vuelidate/lib/validators';
 
 const validations: any = {
   averia: {
-    fechaAveria: {},
-    descripcion: {},
-    pagado: {},
+    fechaAveria: {
+      required,
+    },
+    descripcion: {
+      required,
+      minLength: minLength(1),
+    },
+    automovil: {
+      required,
+    },
+    estadoAveria: {
+      required,
+    },
   },
 };
 

@@ -11,8 +11,12 @@ import EstadoAveriaService from './estado-averia.service';
 
 const validations: any = {
   estadoAveria: {
-    estado: {},
-    descripcion: {},
+    estado: {
+      required,
+    },
+    descripcion: {
+      required,
+    },
   },
 };
 

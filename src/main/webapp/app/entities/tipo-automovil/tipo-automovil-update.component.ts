@@ -11,7 +11,9 @@ import TipoAutomovilService from './tipo-automovil.service';
 
 const validations: any = {
   tipoAutomovil: {
-    tipo: {},
+    tipo: {
+      required,
+    },
   },
 };
 
